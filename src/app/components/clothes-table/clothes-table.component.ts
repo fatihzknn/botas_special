@@ -79,11 +79,11 @@ export class ClothesTableComponent implements OnInit {
 
   // }
 
-  refresh() {
-    let currentUrl = this.router.url;
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate([currentUrl]);
+
+ refresh() {
+    this.connectService.getClothes().subscribe((data: Product[]) => {
+      this.dataSource.data = data;
+    })
   }
 
   openDialog2(clothe: Product) {

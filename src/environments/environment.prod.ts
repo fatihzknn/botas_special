@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  baseUrl: window.location.origin
+  // baseUrl:"http://192.168.42.164/"
 };
