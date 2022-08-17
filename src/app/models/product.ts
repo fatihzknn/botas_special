@@ -1,0 +1,26 @@
+export interface Product{
+    sicil_no: number,
+    ad_soyad: string,
+    kurum: string,
+    unite: string,
+    birim: string,
+    unvan: string,
+    beden: number,
+    ayak_no: number,
+    kan_grubu: string,
+    cinsiyet: boolean,
+    ilk_yardimci_sertifikasi_var_mi: boolean,
+    kkd_dagitim_dayanagi: string,
+    donem: string,
+    kkd_ozellik: string,
+    kkd_malzeme_cinsi: string,
+    yil: number,
+    verildigi_tarih: string,
+    kkd_kullanim_suresi: string,
+    sonraki_yil: number,
+    alacak_bilgisi: string,
+    aldi_bilgisi: string,
+    durum_belirlenen_sure_icinde_mi_sure_asildi_mi:boolean;
+    dagitim_planlandi_mi_aktif_verildi:boolean,
+    kiyafet_id:string
+}

@@ -1,0 +1,117 @@
+<form class="example-form" [formGroup]="formGrup">
+    <table>
+    <td>
+      <mat-form-field class="example-full-width" id="x" appearance="fill">
+      <mat-label>Sicil No</mat-label>
+      <input formControlName="sicil_no" matInput>
+    </mat-form-field></td>
+  
+    <td>
+      <mat-form-field class="example-full-width" id="x" appearance="fill">
+        <mat-label>Ad Soyad</mat-label>
+        <input  type="text" formControlName="ad_soyad" matInput>
+      </mat-form-field>
+    </td>
+  
+  </table>
+ 
+  
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Ünvan</mat-label>
+            <input formControlName="unvan" matInput >
+          </mat-form-field>
+        </td>
+      <td>
+        <mat-form-field class="example-full-width" id="x" appearance="fill">
+        <mat-label>Birim</mat-label>
+        <input formControlName="birim" matInput>
+      </mat-form-field>
+    </td>
+      
+    </tr>
+  </table>
+ 
+    <table class="example-full-width" cellspacing="0"><tr>
+      <td>
+        <mat-form-field class="example-full-width" id="x" appearance="fill">
+        <mat-label>Alt Birim</mat-label>
+        <input formControlName="alt_birim" matInput>
+      </mat-form-field>
+    </td>
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Beden</mat-label>
+        <input  formControlName="beden" matInput>
+      </mat-form-field>
+    </td>
+      </table>
+  
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td><mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Ayak Numarası</mat-label>
+          <input formControlName = "ayak_no" matInput>
+        </mat-form-field></td>
+     
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>Kan Grubu</mat-label>
+            <mat-select formControlName="kan_grubu" >
+              <mat-option value="0Rh+">0Rh+</mat-option>
+              <mat-option value="0Rh-">0Rh-</mat-option>
+              <mat-option value="ARh+">ARh+</mat-option>
+              <mat-option value="ARh-">ARh-</mat-option>
+              <mat-option value="BRh+">BRh+</mat-option>
+              <mat-option value="BRh-">BRh-</mat-option>
+              <mat-option value="ABRh-">ABRh-</mat-option>
+              <mat-option value="ABRh+">ABRh+</mat-option>
+            </mat-select>
+          </mat-form-field>
+      </td>
+        
+      </tr>
+  
+    </table>
+
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>Cinsiyet</mat-label>
+            <mat-select formControlName="cinsiyet">
+              <mat-option value="Erkek"> Erkek</mat-option>
+              <mat-option value="Kadın"> Kadın</mat-option>
+            </mat-select>
+          </mat-form-field>
+      </td>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>İlk Yardım</mat-label>
+            <mat-select formControlName="ilk_yardim">
+              <mat-option value="Evet">Evet</mat-option>
+              <mat-option value="Hayır">Hayır</mat-option>
+            </mat-select>
+          </mat-form-field>
+      </td>
+    
+       
+      </tr>
+    </table>
+      
+  
+  <div class="button">
+    <button style="width: 150px;" mat-raised-button color="primary" (click)="saveEmployee()" (click)="refresh()">Kaydet</button>
+    
+    <button (click)="cancel()"
+        style="width: 150px"
+        mat-raised-button
+        color="warn"
+      >
+        İptal
+      </button>
+    
+    </div>
+  </form>

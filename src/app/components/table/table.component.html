@@ -1,0 +1,105 @@
+  <div class="button">
+    <button style="background-color:rgb(3, 131, 3) ;" mat-mini-fab color="accent" aria-label="Example icon button with a delete icon" (click)="openDialog()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <h2 class="aw">ÇALIŞAN KIYAFET YÖNETİMİ</h2>
+
+  <div class="mat-elevation-z8">
+    <mat-form-field class="filter" appearance="standard">
+      <mat-label>Ara..</mat-label>
+      <input matInput (keyup)="applyFilter($event)" #input>
+    </mat-form-field>
+    
+    <table 
+     mat-table [dataSource]="dataSource"
+    matSort matSortActive="sicil_no" matSortDisableClear matSortDirection="desc">     
+      
+      <ng-container  matColumnDef="sicil_no">
+        <th class="bold" mat-header-cell *matHeaderCellDef mat-sort-header> Sicil No</th>
+        <td  mat-cell *matCellDef="let element"> {{element.sicil_no}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="ad_soyad">
+        <th class="bold" mat-header-cell *matHeaderCellDef mat-sort-header=> Ad Soyad </th>
+        <td mat-cell *matCellDef="let element"> {{element.ad_soyad}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="birim">
+        <th class="bold" mat-header-cell *matHeaderCellDef> Birim </th>
+        <td mat-cell *matCellDef="let element"> {{element.birim}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="alt_birim">
+        <th class="bold" mat-header-cell *matHeaderCellDef> Alt Birim </th>
+        <td mat-cell *matCellDef="let element"> {{element.alt_birim}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="unvan">
+        <th class="bold" mat-header-cell *matHeaderCellDef> Unvan </th>
+        <td mat-cell *matCellDef="let element"> {{element.unvan}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="beden">
+        <th class="bold" mat-header-cell *matHeaderCellDef> Beden </th>
+        <td mat-cell *matCellDef="let element"> {{element.beden}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="ayak_no">
+        <th class="bold" mat-header-cell *matHeaderCellDef> Ayak No </th>
+        <td mat-cell *matCellDef="let element"> {{element.ayak_no}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="kan_grubu">
+        <th class="bold" mat-header-cell *matHeaderCellDef> Kan Grubu </th>
+        <td mat-cell *matCellDef="let element"> {{element.kan_grubu}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="cinsiyet">
+        <th class="bold" mat-header-cell *matHeaderCellDef> Cinsiyet </th>
+        <td mat-cell *matCellDef="let element"> {{element.cinsiyet}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="ilk_yardim">
+        <th class="bold" mat-header-cell *matHeaderCellDef> İlk Yardım </th>
+        <td mat-cell *matCellDef="let element"> {{element.ilk_yardim}} </td>
+      </ng-container>
+      
+      
+      <ng-container matColumnDef="Detail">
+        <th class="bold" mat-header-cell *matHeaderCellDef > </th>
+        <td mat-cell *matCellDef="let element"> <button style="background-color:rgb(4, 82, 146);" mat-mini-fab color="primary" aria-label="Example icon button with a delete icon" (click)="getName(element.sicil_no)" (click)="openDialog3(element.sicil_no,element.ad_soyad)">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Sil">
+        <th class="bold" mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element"><button mat-mini-fab color="warn" aria-label="Example icon button with a delete icon" (click)="deleteEmployer(element.sicil_no, element.aktif_pasif)" (click)="refresh()">
+          
+          <mat-icon>close</mat-icon>
+        </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Güncelle">
+        <th class="bold" mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element"> <button style="background-color:rgb(68, 70, 70);" mat-mini-fab color="primary" aria-label="Example icon button with a delete icon" (click)="openDialog2(element)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+      </ng-container>
+      
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    
+    <mat-paginator [pageSizeOptions]="[10]"
+                   showFirstLastButtons 
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  
+  

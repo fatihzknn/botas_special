@@ -1,0 +1,247 @@
+import { ClothesTableComponent } from './../clothes-table/clothes-table.component';
+import { TableInputComponent } from './../table-input/table-input.component';
+import { ConnectDbService } from './../../services/connect-db.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { Employee } from 'src/app/models/employee';
+import { TableInputUpdateComponent } from 'src/app/table-input-update/table-input-update.component';
+import { MatSort, Sort } from '@angular/material/sort';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { catchError, map, merge,Observable, of as observableOf } from 'rxjs';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+
+@Component({
+  selector: 'app-table',
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.scss']
+})
+export class TableComponent implements OnInit {
+  employeeArray:Employee[] = [] 
+  displayedColumns: string[] = ["sicil_no","ad_soyad","birim","alt_birim","unvan","beden","ayak_no","kan_grubu","cinsiyet","ilk_yardim","Detail","Sil","Güncelle"];
+  dataSource = new MatTableDataSource<Employee>(this.employeeArray)
+
+  
+  @ViewChild(MatPaginator)paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
+
+  constructor(private _httpClient:HttpClient,  public dialog:MatDialog, private fb:FormBuilder, private router:Router, private ngbmodal:NgbModal,private connectService:ConnectDbService) { }
+  
+  @Input() name!: string ;
+
+  ngOnInit(): void {
+    this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort=this.sort;
+    this.connectService.getAktifEmployees().subscribe(data=>{
+      this.dataSource=new MatTableDataSource(data);
+      this.dataSource=new MatTableDataSource(data);
+      this.dataSource.paginator=this.paginator
+      this.dataSource.sort=this.sort
+    })
+      
+
+
+  }
+
+    getName(sicil_no:any){
+    this.connectService.getData(sicil_no).subscribe((res) => {
+      this.name = res;
+    });  }
+
+  
+
+  formGrup!:FormGroup
+
+  
+  readEmployee(){
+    
+    this.connectService.getEmployees().subscribe(res => { 
+      
+      this.employeeArray=res;
+      this.dataSource = new MatTableDataSource<Employee>(this.employeeArray)
+      this.dataSource.paginator=this.paginator;
+    
+      console.log(this.employeeArray)
+
+    })
+  }
+  openDialog(){
+    this.dialog.open(TableInputComponent,{
+      data:{ }
+    })
+  }
+  openDialog2(employee:Employee){
+    
+    this.connectService.getUserInformation= employee;
+    console.log(this.connectService.getUserInformation)
+    this.dialog.open(TableInputUpdateComponent,{
+      data:{employee:employee }
+      
+    })
+  }
+  update(employee:Employee):void{
+    if (!employee) {
+      return;
+    }
+    
+    this.router.navigate([`table-input/${employee.sicil_no}`]);
+  }
+
+
+  deleteEmployer(sicil_no:any, aktif_pasif:any){
+    if(confirm("Kayıdı silmek istiyor musunuz? ") && aktif_pasif == "Aktif") {
+      this.connectService.aktifToPasif(sicil_no).subscribe(res => {
+      
+        alert("Kayıt pasife düşürüldü")
+      })
+      
+    
+    } 
+    else{
+      this.connectService.pasiftoAktif(sicil_no).subscribe(res => {
+      
+        alert("Kayıt aktife dönüştürüldü")
+      })
+
+    }
+  }
+
+  refresh(){
+    window.location.reload(); 
+
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  openDialog3(sicil_no:any,surname:any){
+
+  this.connectService.getUserInformation2= sicil_no;
+    
+    this.dialog.open(ClothesTableComponent,{
+      width:"1050px",
+      data:{employee:sicil_no, nameSurname: surname }
+      
+    })
+  }
+
+
+}
+
+  // updateEmployee(){
+  //   let employee = Object.assign(this.formGrup.value, {} as Employee)
+    
+  //   this.connectService.updateEmployee(employee).subscribe(res => {
+      
+  //   })
+  // }
+  // openDialog2(employee: Employee){
+  //   this.dialog.open(TableInputComponent, {
+  //     data: {employee: employee}
+  //   })
+  // }
+  // refresh(){
+  //   window.location.reload(); 
+
+  // }
+
+// import { TableInputComponent } from './../table-input/table-input.component';
+// import { ConnectDbService } from './../../services/connect-db.service';
+// import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import { MatDialog } from '@angular/material/dialog';
+// import { Employee } from './../../models/employee';
+// import { Component, OnInit, ViewChild } from '@angular/core';
+// import { Router } from '@angular/router';
+// import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+// import { MatTableDataSource } from '@angular/material/table';
+// import { MatPaginator } from '@angular/material/paginator';
+// import { MatSort } from '@angular/material/sort';
+
+// @Component({
+//   selector: 'app-table',
+//   templateUrl: './table.component.html',
+//   styleUrls: ['./table.component.scss']
+// })
+// export class TableComponent implements OnInit {
+//   // displayedColumns: string[] = ['sicil_no', 'ad_soyad', 'birim', 'alt_birim', "unvan", "beden","ayak_numarasi","kan_grubu","cinsiyet","ilk_yardim"];
+//   // dataSource!: MatTableDataSource<Employee>;
+//   // @ViewChild(MatPaginator) paginator: MatPaginator;
+//   // @ViewChild(MatSort) sort: MatSort;
+
+//   employeeArray:Employee[] = []
+//   constructor(public dialog:MatDialog, private fb:FormBuilder, private router:Router, private ngbmodal:NgbModal,private connectService:ConnectDbService) { }
+//   formGrup!:FormGroup
+//   ngOnInit(): void {
+//     this.formGrup = this.fb.group({
+//       sicil_no:['', Validators.required],
+//       ad_soyad:['', Validators.required],
+//       birim:['', Validators.required],
+//       alt_birim:['', Validators.required],
+//       unvan:['', Validators.required],
+//       beden:['', Validators.required],
+//       ayak_no:['', Validators.required],
+//       kan_grubu:['', Validators.required],
+//       cinsiyet:['', Validators.required],
+//       ilk_yardim:['', Validators.required],
+//     })
+//     this.readEmployee()
+//   }
+  
+//   readEmployee(){
+//     this.connectService.getEmployees().subscribe(res => { 
+//       this.employeeArray=res;
+//       console.log(res)
+//     })
+//   }
+//   openDialog(){
+//     this.dialog.open(TableInputComponent,{
+//       data:{ }
+//     })
+//   }
+//   // update(employee:Employee):void{
+//   //   if (!employee) {
+//   //     return;
+//   //   }
+    
+//   //   this.router.navigate([`table-input/${employee.sicil_no}`]);
+//   // }
+//   // deleteTable(sicil_no:any){
+//   //   if(confirm("Kayıdı silmek istiyor musunuz? ")) {
+//   //     this.connectService.deleteEmployee(sicil_no).subscribe(res => {
+      
+//   //       alert("Kayıt silindi!")
+//   //     })
+//   //   } 
+//   // }
+//   // updateEmployee(){
+//   //   let employee = Object.assign(this.formGrup.value, {} as Employee)
+    
+//   //   this.connectService.updateEmployee(employee).subscribe(res => {
+      
+//   //   })
+//   // }
+//   // openDialog2(employee: Employee){
+//   //   this.dialog.open(TableInputComponent, {
+//   //     data: {employee: employee}
+//   //   })
+//   // }
+//   // refresh(){
+//   //   window.location.reload(); 
+
+//   // }
+
+
+
+
+
+
+
+
+

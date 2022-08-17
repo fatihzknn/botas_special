@@ -1,0 +1,141 @@
+<form class="example-form" [formGroup]="formGrup">
+    <table>
+      <td>
+        <mat-form-field class="example-full-width" id="x" appearance="fill">
+          <mat-label>Sicil No</mat-label>
+          <input readonly minlength="11" maxlength="11" formControlName="sicil_no" matInput />
+        </mat-form-field>
+      </td>
+      <td >
+        <mat-form-field  class="c example-full-width"  id="y" appearance="fill">
+          <mat-label>KKD Malzeme Cinsi</mat-label>
+          <input formControlName="kkd_malzeme_cinsi" matInput />
+        </mat-form-field>
+      </td>
+    
+      </table>
+
+    <table>
+      <td>
+        <mat-form-field class="example-full-width" id="n" appearance="fill">
+          <mat-label>KKD Özellik</mat-label>
+          <input formControlName="kkd_ozellik" matInput />
+        </mat-form-field>
+      </td>
+
+      <td>
+        <mat-form-field class="example-full-width" id="n" appearance="fill">
+          <mat-label>KKD Dağıtım Dayanağı</mat-label>
+          <input formControlName="kkd_dagitim_dayanagi" matInput />
+        </mat-form-field>
+        </td>
+ 
+      <td>
+        <mat-form-field id="y" appearance="fill">
+          <mat-label>Dönem</mat-label>
+          <mat-select formControlName="donem">
+            <mat-option value="Yazlık">Yazlık</mat-option>
+            <mat-option value="Kışlık">Kışlık</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+      
+      
+    </table>
+
+    <table>
+      <td>
+        <mat-form-field class="example-full-width" id="n" appearance="fill">
+          <mat-label>Yıl</mat-label>
+          <input formControlName="yil" matInput />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width" id="n" appearance="fill">
+          <mat-label>KKD Kullanım Süresi</mat-label>
+          <input formControlName="kkd_kullanim_suresi" matInput />
+        </mat-form-field>
+      </td>
+
+      <td>
+        <mat-form-field class="example-full-width" id="y" appearance="fill">
+          <mat-label>Verildiği Tarihi</mat-label>
+          <input type="date" formControlName="verildigi_tarih" matInput />
+        </mat-form-field>
+      </td>
+      
+      
+     
+    </table>
+
+    <table>
+      <td>
+        <mat-form-field class="example-full-width" id="n" appearance="fill">
+          <mat-label>Alacak Bilgisi</mat-label>
+          <input type="date" formControlName="alacak_bilgisi" matInput>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width" id="y" appearance="fill">
+          <mat-label>Sonraki Yıl</mat-label>
+          <input formControlName="sonraki_yil" matInput />
+        </mat-form-field>
+      </td>
+      
+      <td>
+        <mat-form-field class="example-full-width" id="y" appearance="fill">
+         <mat-label>Aldı Bilgisi</mat-label>
+         <mat-select formControlName = "aldi_bilgisi">
+           <mat-option value="Evet">Evet</mat-option>
+           <mat-option value="Hayır">Hayır</mat-option>
+         </mat-select>
+       </mat-form-field>
+       </td>
+      
+    </table>
+    <table>
+      <td>
+        <mat-form-field id="n" appearance="fill">
+          <mat-label>Durum</mat-label>
+          <mat-select formControlName = "durum_belirlenen_sure_icinde_mi_sure_asildi_mi">
+            <mat-option value="Süre İçinde">Süre İçinde</mat-option>
+            <mat-option value="Süre Aşımı">Süre Aşımı</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+
+      <td>
+        <mat-form-field  id="y" appearance="fill">
+          <mat-label>Dağıtım Planı</mat-label>
+          <mat-select formControlName = "dagitim_planlandi_mi_aktif_verildi">
+            <mat-option value="Aktif">Aktif</mat-option>
+            <mat-option value="Verildi">Verildi</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+  
+  <tr>
+    <td></td>
+    <td>
+    <div class="buto">
+      <button
+        style="width: 100px"
+        mat-raised-button
+        color="primary"
+        (click)="updateClothe()"
+        (click)="refresh()"
+      >
+        Güncelle
+      </button>
+        <button class="but" (click)="cancel()"
+          style="width: 100px; margin-left: 1rem;"
+          mat-raised-button
+          color="warn"
+        >
+          İptal
+        </button>
+    </div>
+  </td>
+  </tr>
+  </table>
+  </form>

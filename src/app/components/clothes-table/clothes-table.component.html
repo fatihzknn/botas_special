@@ -1,0 +1,200 @@
+<!-- <div class="buton">
+    <button class="btn btn-sm btn-success"  (click)="openDialog()">
+      <i class="fa fa-remove"></i>Ekle</button>
+  </div>
+  
+  <table class="table" style="margin-top: 1rem;">
+    
+      <thead class="table-dark">
+        <tr class="border border-dark p-2 mb-2">
+          <th scope="col">Sicil</th>
+          <th scope="col">Ad Soyad</th>
+          <th scope="col">Kurum</th>
+          <th scope="col">Ünite</th>
+          <th scope="col">Birim</th>
+          <th scope="col">Ünvan</th>
+          <th scope="col">Beden</th>
+          <th scope="col">Ayak Numarası</th>
+          <th scope="col">Cinsiyet</th>
+          <th scope="col">İlk Yardımcı Sertifikası Var Mı?</th>
+          <th scope="col">KKD Dağıtım Dayanağı</th>
+          <th scope="col">Dönem</th>
+          <th scope="col">KKD Özellik</th>
+          <th scope="col">KKD Malzeme Cinsi </th>
+          <th scope="col">Yıl</th>
+          <th scope="col">Verildiği Tarih</th>
+          <th scope="col">KKD Kullanım Süresi</th>
+          <th scope="col">Sonraki Yıl</th>
+          <th scope="col">Alacak Bilgisi</th>
+          <th scope="col">Aldı Bilgisi</th>
+          <th scope="col">Durum (Belirlenen Süre İçinde Mi?/Süre Aşıldı Mı?)</th>
+          <th scope="col">Dağıtım (Planlandı Mı?/Aktif Verildi Mi?)</th>
+
+
+          
+          <!- <th scope="col"></th>
+          <th scope="col"></th> -->
+        <!-- </tr>
+      </thead>
+      <tbody> -->
+        <!-- <tr *ngFor="let item of clothesArray" class="border border-dark p-2 mb-2">
+          <td>{{item.SICIL}}</td>
+          <td>{{ item.AD_SOYAD }}</td>
+          <td>{{ item.KURUM }}</td>
+          <td>{{ item.UNITE }}</td>       
+          <td>{{ item.BIRIM }}</td>
+          <td>{{ item.UNVAN }}</td>
+          <td>{{ item.BEDEN }}</td>
+          <td>{{ item.AYAK_NO }}</td>
+          <td>{{ item.KAN_GRUBU }}</td>
+          <td>{{ item.CINSIYET }}</td>
+          <td>{{ item.ILK_YARDIMCI_SERTIFIKASI_VAR_MI }}</td>
+          <td>{{ item.KKD_DAGITIM_DAYANAGI }}</td>
+          <td>{{ item.DONEM }}</td>
+          <td>{{ item.KKD_OZELLIK }}</td>
+          <td>{{ item.KKD_MALZEME_CINSI }}</td>
+          <td>{{ item.YIL }}</td>
+          <td>{{ item.VERILDIGI_TARIH }}</td>
+          <td>{{ item.KKD_KULLANIM_SURESI }}</td>
+          <td>{{ item.SONRAKI_YIL }}</td>
+          <td>{{ item.ALACAK_BILGISI }}</td>
+          <td>{{ item.ALDI_BILGISI }}</td>
+          <td>{{ item.DURUM_BELIRLENEN_SURE_ICINDE_MI_SURE_ASILDI_MI }}</td>
+          <td>{{ item.DAGITIM_PLANLANDI_MI_AKTIF_VERILDI }}</td>
+          <td>
+            <button class="btn btn-sm btn-danger">
+              <i class="fa fa-remove"></i>Sil</button>
+          </td> 
+           -->
+          
+          <!-- <td>
+            <button class="btn btn-sm btn-danger" (click)="deleteTable(item.SICIL)" (click)="refresh()">
+              <i class="fa fa-remove"></i>Sil</button>
+          </td> -->
+          <!-- <td class="d-flex">
+            <button class="btn btn-sm btn-success" (click)="openDialog2(item)"  >
+              <i class="fa fa-remove" ></i>Güncelle</button>
+           
+            
+          </td> -->
+        <!-- </tr>
+        </tbody>
+    </table> -->
+
+
+    <div class="button">
+        <button style="background-color:rgb(3, 131, 3) ;" mat-mini-fab color="accent" aria-label="Example icon button with a delete icon" (click)="openDialog()">
+          <mat-icon>add</mat-icon>
+        </button>
+        </div>
+          
+        <div class="aw">
+          {{data.nameSurname}} KIYAFET LİSTESİ
+        </div>
+
+        <div class="mat-elevation-z8">
+        <table class="font"  mat-table [dataSource]="dataSource">
+  
+           <ng-container matColumnDef="sicil_no">
+            <th class="sicil th-center bold" mat-header-cell *matHeaderCellDef> Sicil No</th>
+            <td class="font" mat-cell *matCellDef="let element"> {{element.sicil_no}} </td>
+          </ng-container>
+          <ng-container matColumnDef="kiyafet_id">
+            <th class="sicil th-center bold" mat-header-cell *matHeaderCellDef> Kıyafet Id</th>
+            <td class="font" mat-cell *matCellDef="let element"> {{element.kiyafet_id}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="kkd_dagitim_dayanagi">
+            <th class="a th-center bold" mat-header-cell *matHeaderCellDef> KKD Dağıtım Dayanağı </th>
+            <td class="font txtAlign" mat-cell *matCellDef="let element"> {{element.kkd_dagitim_dayanagi}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="donem">
+            <th class="a th-center bold" mat-header-cell *matHeaderCellDef>Dönem </th>
+            <td class="font txtAlign" mat-cell *matCellDef="let element"> {{element.donem}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="kkd_ozellik">
+            <th class="a th-center bold" mat-header-cell *matHeaderCellDef>KKD Özellik </th>
+            <td class="font txtAlign" mat-cell *matCellDef="let element"> {{element.kkd_ozellik}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="kkd_malzeme_cinsi">
+            <th class="a th-center bold" mat-header-cell *matHeaderCellDef>KKD Malzeme Cinsi </th>
+            <td class="font txtAlign" mat-cell *matCellDef="let element"> {{element.kkd_malzeme_cinsi}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="yil">
+            <th class="a th-center bold" mat-header-cell *matHeaderCellDef>Yıl </th>
+            <td class="font txtAlign" mat-cell *matCellDef="let element"> {{element.yil}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="verildigi_tarih">
+            <th class="a th-center bold" mat-header-cell *matHeaderCellDef>Verildiği Tarih </th>
+            <td class="font txtAlign" mat-cell *matCellDef="let element"> {{element.verildigi_tarih}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="kkd_kullanim_suresi">
+            <th class="a th-center bold" mat-header-cell *matHeaderCellDef>KKD Kullanım Süresi </th>
+            <td class="font txtAlign" mat-cell *matCellDef="let element"> {{element.kkd_kullanim_suresi}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="sonraki_yil">
+            <th class="a th-center bold" mat-header-cell *matHeaderCellDef>Sonraki Yıl </th>
+            <td class="font txtAlign" mat-cell *matCellDef="let element"> {{element.sonraki_yil}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="alacak_bilgisi">
+            <th class="a th-center bold" mat-header-cell *matHeaderCellDef>Alacak Bilgisi </th>
+            <td class="font txtAlign" mat-cell *matCellDef="let element"> {{element.alacak_bilgisi}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="aldi_bilgisi">
+            <th class="a th-center bold" mat-header-cell *matHeaderCellDef>Aldı Bilgisi </th>
+            <td class="font txtAlign" mat-cell *matCellDef="let element"> {{element.aldi_bilgisi}}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="durum_belirlenen_sure_icinde_mi_sure_asildi_mi">
+            <th class="a th-center bold" mat-header-cell *matHeaderCellDef>Durum</th>
+            <td class="font txtAlign" mat-cell *matCellDef="let element"> {{element.durum_belirlenen_sure_icinde_mi_sure_asildi_mi}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="dagitim_planlandi_mi_aktif_verildi">
+            <th class="a th-center bold" mat-header-cell *matHeaderCellDef>Dağıtım Planlandı Mı? </th>
+            <td class="font txtAlign" mat-cell *matCellDef="let element"> {{element.dagitim_planlandi_mi_aktif_verildi}} </td>
+          </ng-container>
+  
+          <ng-container class="bold" matColumnDef="Sil">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element"><button mat-mini-fab color="warn" aria-label="Example icon button with a delete icon" (click)="deleteClothe(element.kiyafet_id)" (click)="refresh()">
+              <mat-icon>delete</mat-icon>
+            </button>
+            </td>
+          </ng-container>
+        
+          <ng-container class=" bold" matColumnDef="Güncelle">
+            <th class="a bold" mat-header-cell *matHeaderCellDef> </th>
+            <td mat-cell *matCellDef="let element"> <button style="background-color:rgb(68, 70, 70);" mat-mini-fab color="primary" aria-label="Example icon button with a delete icon" (click)="openDialog2(element)">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        
+        <mat-paginator [pageSizeOptions]="[10]"
+                       showFirstLastButtons 
+                       aria-label="Select page of periodic elements">
+        </mat-paginator>
+        <div class="iptal">
+        <button  (click)="cancel()"
+        style="width: 100px"
+        mat-raised-button
+        color="warn"
+      >
+        İptal
+      </button>
+    </div>
+</div>
