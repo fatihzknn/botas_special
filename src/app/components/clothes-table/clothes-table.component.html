@@ -82,15 +82,27 @@
     </table> -->
 
 
-    <div class="button">
-        <button style="background-color:rgb(3, 131, 3) ;" mat-mini-fab color="accent" aria-label="Example icon button with a delete icon" (click)="openDialog()">
-          <mat-icon>add</mat-icon>
-        </button>
-        </div>
-          
-        <div class="aw">
-          {{data.nameSurname}} KIYAFET LİSTESİ
-        </div>
+    <div class="dd">
+      <button style=" background-color:transparent;" mat-mini-fab color="" aria-label="Example icon button with a delete icon" (click)="cancel()">
+
+        <mat-icon>close</mat-icon>
+      </button>
+</div>
+
+    
+       <table>
+        <tr>
+        <td class="aw">
+            {{data.nameSurname}} KIYAFET LİSTESİ
+          </td>
+
+          <td class="button"> <button style="background-color:rgb(3, 131, 3) ;" mat-mini-fab color="accent" aria-label="Example icon button with a delete icon" (click)="openDialog()">
+            <mat-icon>add</mat-icon>
+          </button>  
+        </td> 
+
+        </tr> 
+      </table>
 
         <div class="mat-elevation-z8">
         <table class="font"  mat-table [dataSource]="dataSource">
@@ -188,13 +200,5 @@
                        showFirstLastButtons 
                        aria-label="Select page of periodic elements">
         </mat-paginator>
-        <div class="iptal">
-        <button  (click)="cancel()"
-        style="width: 100px"
-        mat-raised-button
-        color="warn"
-      >
-        İptal
-      </button>
-    </div>
+       
 </div>

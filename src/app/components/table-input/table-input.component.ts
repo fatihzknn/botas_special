@@ -19,7 +19,7 @@ export class TableInputComponent implements OnInit {
     this.formGrup = this.fb.group({
       sicil_no:['', Validators.required],
       ad_soyad:['', Validators.required],
-      birim:['', Validators.required],
+      unite:['', Validators.required],
       alt_birim:['', Validators.required],
       unvan:['', Validators.required],
       beden:['', Validators.required],

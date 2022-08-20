@@ -23,7 +23,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 })
 export class TableComponent implements OnInit {
   employeeArray:Employee[] = [] 
-  displayedColumns: string[] = ["sicil_no","ad_soyad","birim","alt_birim","unvan","beden","ayak_no","kan_grubu","cinsiyet","ilk_yardim","Detail","Sil","Güncelle"];
+  displayedColumns: string[] = ["sicil_no","ad_soyad","unite","alt_birim","unvan","beden","ayak_no","kan_grubu","cinsiyet","ilk_yardim","Detail","Sil","Güncelle"];
   dataSource = new MatTableDataSource<Employee>(this.employeeArray)
 
   
@@ -36,9 +36,12 @@ export class TableComponent implements OnInit {
   @Input() name!: string ;
 
   ngOnInit(): void {
+    
     this.dataSource.paginator = this.paginator;
     // this.dataSource.sort=this.sort;
+    
     this.connectService.getAktifEmployees().subscribe(data=>{
+      
       this.dataSource=new MatTableDataSource(data);
       this.dataSource=new MatTableDataSource(data);
       this.dataSource.paginator=this.paginator

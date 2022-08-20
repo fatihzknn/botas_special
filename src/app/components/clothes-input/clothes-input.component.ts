@@ -2,9 +2,10 @@ import { Employee } from './../../models/employee';
 import { ConditionalExpr } from '@angular/compiler';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Product } from 'src/app/models/product';
 import { ConnectDbService } from 'src/app/services/connect-db.service';
+import { ClothesTableComponent } from '../clothes-table/clothes-table.component';
 
 @Component({
   selector: 'app-clothes-input',
@@ -13,7 +14,7 @@ import { ConnectDbService } from 'src/app/services/connect-db.service';
 })
 export class ClothesInputComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<ClothesInputComponent>,
+  constructor(private dialog:MatDialog, public dialogRef: MatDialogRef<ClothesInputComponent>,
     @Inject(MAT_DIALOG_DATA) public data: {clothe:Product}, private fb:FormBuilder, private connectService:ConnectDbService) { 
 
   }
@@ -21,7 +22,7 @@ export class ClothesInputComponent implements OnInit {
   clothes: Employee = {
     sicil_no: 0,
     ad_soyad: '',
-    birim: '',
+    unite: '',
     alt_birim:'',
     unvan: '',
     beden: 0,
@@ -73,6 +74,7 @@ export class ClothesInputComponent implements OnInit {
     this.connectService.insertClothes(clothe).subscribe(res => {
       console.log(res)
       alert("Çalışan Kaydedildi")
+      this.refresh()
     })
     }
     else{
@@ -81,10 +83,21 @@ export class ClothesInputComponent implements OnInit {
       alert("Tüm boşlukları doldurunuz")
     }
   }
-  refresh(){
-    window.location.reload(); 
 
-  }
+  openDialogClothe(sicil_no:any,surname:any){
+
+    this.connectService.getUserInformation2= sicil_no;
+      
+      this.dialog.open(ClothesTableComponent,{
+        width:"1050px",
+        data:{employee:sicil_no, nameSurname: surname }
+        
+      })
+    }
+    refresh(){
+      this.dialog.closeAll();
+      this.openDialogClothe(this.clothes.sicil_no,this.clothes.ad_soyad)
+    }
 
   cancel(){
     this.dialogRef.close();

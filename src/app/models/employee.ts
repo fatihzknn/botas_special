@@ -1,7 +1,7 @@
 export interface Employee {
     sicil_no:number,
     ad_soyad:string,
-    birim:String,
+    unite:String,
     alt_birim:String,
     unvan:string,
     beden:number,

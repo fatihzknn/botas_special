@@ -19,7 +19,7 @@ export class TableInputUpdateComponent implements OnInit {
     this.formGrup = this.fb.group({
       sicil_no:[this.data.employee.sicil_no, Validators.required],
       ad_soyad:[this.data.employee.ad_soyad, Validators.required],
-      birim:[this.data.employee.birim, Validators.required],
+      unite:[this.data.employee.unite, Validators.required],
       alt_birim:[this.data.employee.alt_birim, Validators.required],
       unvan:[this.data.employee.unvan, Validators.required],
       beden:[this.data.employee.beden, Validators.required],

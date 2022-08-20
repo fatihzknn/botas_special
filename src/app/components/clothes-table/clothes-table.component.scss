@@ -19,6 +19,11 @@ table{
 .button{
     display: flex;
     justify-content: flex-end;
+
+}
+.sasa{
+    display: flex;
+    justify-content: flex-start;
 }
 
 .a{
@@ -63,4 +68,10 @@ table{
     font-size: x-large;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 
+}
+
+.dd{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
 }

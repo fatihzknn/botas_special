@@ -16,7 +16,7 @@ export class ClothesInputUpdateComponent implements OnInit {
   clothes: Employee = {
     sicil_no: 0,
     ad_soyad: '',
-    birim: '',
+    unite: '',
     alt_birim:'',
     unvan: '',
     beden: 0,

@@ -80,6 +80,7 @@ export class ClothesTableComponent implements OnInit {
   // }
 
 
+  
  refresh() {
     this.connectService.getClothes().subscribe((data: Product[]) => {
       this.dataSource.data = data;
