@@ -18,6 +18,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ClothesTableComponent implements OnInit {
   clothesArray: Product[] = [];
+  clothesAktifArray: Product[] = [];
 
   dataSource = new MatTableDataSource<Product>(this.clothesArray);
   displayedColumns: string[] = ["kiyafet_id","sicil_no","kkd_malzeme_cinsi","kkd_ozellik","verildigi_tarih","kkd_dagitim_dayanagi","kkd_kullanim_suresi","donem","yil","sonraki_yil","alacak_bilgisi","aldi_bilgisi","durum_belirlenen_sure_icinde_mi_sure_asildi_mi","dagitim_planlandi_mi_aktif_verildi","Sil","Güncelle"];
@@ -45,7 +46,9 @@ export class ClothesTableComponent implements OnInit {
       this.dataSource = new MatTableDataSource<Product>(this.clothesArray);
       this.dataSource.paginator = this.paginator;
       console.log(this.clothesArray);
+      
     });
+    
   }
 
   openDialog() {
@@ -99,4 +102,24 @@ export class ClothesTableComponent implements OnInit {
   cancel() {
     this.dialogRef.close();
   }
+
+  getAktifClothes(){
+    this.connectService.getAktifClothes().subscribe(res=>{
+      this.clothesAktifArray = res;
+      this.dataSource = new MatTableDataSource<Product>(this.clothesAktifArray);
+      this.dataSource.paginator = this.paginator;
+      console.log(this.clothesAktifArray);
+    })
+  }
+
+  getVerildi(){
+    this.connectService.getPasifClothes().subscribe(res=>{
+      this.clothesAktifArray = res;
+      this.dataSource = new MatTableDataSource<Product>(this.clothesAktifArray);
+      this.dataSource.paginator = this.paginator;
+      console.log(this.clothesAktifArray);
+    })
+  }
+
+
 }

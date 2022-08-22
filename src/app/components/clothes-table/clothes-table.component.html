@@ -95,6 +95,13 @@
         <td class="aw">
             {{data.nameSurname}} KIYAFET LİSTESİ
           </td>
+          <div class="radios">
+            <mat-radio-group aria-label="Select an option">
+              <mat-radio-button class="radio1" (change)="readClothes()">Hepsi</mat-radio-button>
+              <mat-radio-button class="radio2" (change)="getAktifClothes()" value="1">Aktif</mat-radio-button>
+              <mat-radio-button class="radio3" (change)="getVerildi()" value="2">Verildi</mat-radio-button>
+            </mat-radio-group>
+          </div>
 
           <td class="button"> <button style="background-color:rgb(3, 131, 3) ;" mat-mini-fab color="accent" aria-label="Example icon button with a delete icon" (click)="openDialog()">
             <mat-icon>add</mat-icon>

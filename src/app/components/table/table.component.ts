@@ -1,3 +1,4 @@
+import { MessageComponent } from './../message/message.component';
 import { ClothesTableComponent } from './../clothes-table/clothes-table.component';
 import { TableInputComponent } from './../table-input/table-input.component';
 import { ConnectDbService } from './../../services/connect-db.service';
@@ -29,6 +30,7 @@ export class TableComponent implements OnInit {
   
   @ViewChild(MatPaginator)paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  count: any;
 
 
   constructor(private _httpClient:HttpClient,  public dialog:MatDialog, private fb:FormBuilder, private router:Router, private ngbmodal:NgbModal,private connectService:ConnectDbService) { }
@@ -48,13 +50,16 @@ export class TableComponent implements OnInit {
       this.dataSource.sort=this.sort
     })
       
-
-
+    
+    
   }
 
     getName(sicil_no:any){
+      
     this.connectService.getData(sicil_no).subscribe((res) => {
       this.name = res;
+     
+      
     });  }
 
   
@@ -123,17 +128,41 @@ export class TableComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
-  openDialog3(sicil_no:any,surname:any){
-
-  this.connectService.getUserInformation2= sicil_no;
-    
-    this.dialog.open(ClothesTableComponent,{
-      width:"1050px",
-      data:{employee:sicil_no, nameSurname: surname }
+  readClothesCount(){
+    this.connectService.getClothesCount().subscribe((res) => {
+      this.count = res[0].count
       
-    })
+      
+    });
   }
+  openDialog3(sicil_no:any,surname:any){
+    this.connectService.getUserInformation2= sicil_no;
+    this.readClothesCount()
+    console.log(this.count)
+    
+if(this.count == 0){
+  
+    
+  this.dialog.open(MessageComponent,{
+    width:"1050px",
+    data:{employee:sicil_no, nameSurname: surname }
+    
+  })
+}
+else{
+  //this.connectService.getUserInformation2= sicil_no;
+    
+  this.dialog.open(ClothesTableComponent,{
+    width:"1050px",
+    data:{employee:sicil_no, nameSurname: surname }
+    
+  })
+ 
+  }
+}
+
+ 
+
 
 
 }

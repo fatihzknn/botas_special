@@ -19,7 +19,7 @@ export class ConnectDbService {
   constructor(private http:HttpClient) { }
 
   getToken() { // ************
-    return "71882582453655477245"
+    return "83835346788487826654"
     //return localStorage.getItem('token')
   }
 
@@ -31,12 +31,19 @@ export class ConnectDbService {
       DataStoreId: '51487131248722587836',
       Operation: 'insert',
       Encrypted: 1951,
-      Data: `Insert into "postgres".public.botas_cik3(sicil_no,ad_soyad,unite,alt_birim,unvan,beden,ayak_no,kan_grubu,cinsiyet,ilk_yardim,aktif_pasif) values(${data.sicil_no}, '${data.ad_soyad}', '${data.unite}','${data.alt_birim}','${data.unvan}',${data.beden},${data.ayak_no},'${data.kan_grubu}','${data.cinsiyet}','${data.ilk_yardim}','Aktif')`,
+      Data: `insert into "postgres".public.botas_cik3  (sicil_no)
+      Select ${data.sicil_no} Where not exists(select * from "postgres".public.botas_cik3  where sicil_no =${data.sicil_no}) 
+      Update \"postgres\".public.botas_cik3 Set sicil_no=${data.sicil_no},ad_soyad='${data.ad_soyad}',unite='${data.unite}',alt_birim='${data.alt_birim}',unvan='${data.unvan}',beden='${data.beden}',ayak_no='${data.ayak_no}',kan_grubu='${data.kan_grubu}',cinsiyet='${data.cinsiyet}',ilk_yardim='${data.ilk_yardim}',aktif_pasif='AKTİF'
+          WHERE sicil_no = ${data.sicil_no}`,
     };
     return this.http.post(baseUrl + 'Applications/DataOps', body);
   }
-
-
+  // insert into botas_cpb  (sicil)
+  // Select 735 Where not exists(select * from botas_cpb  where sicil=735)
+  // // INSERT INTO targetTable(field1) 
+  // SELECT field1
+  // FROM myTable
+  // WHERE NOT(field1 IN (SELECT field1 FROM targetTable))
 
   getEmployees() {
     const body = {
@@ -160,6 +167,22 @@ export class ConnectDbService {
             })
           );
         }
+
+        getClothesCount(){
+          const body = {
+            Token: this.getToken(),
+            DataStoreId: '54524581455213527462',
+            Operation: 'read',
+            Encrypted: 1951,
+            Data: `select COUNT(kiyafet_id) from \"postgres\".public.botas_cpb where sicil_no=${this.getUserInformation2}`,
+          };
+          return this.http.post(baseUrl + 'Applications/DataOps', body).pipe(
+            map((response: any) => {
+              return response.message;
+            })
+          );
+        // select COUNT(kiyafet_id) from botas_cpb where botas_cpb.sicil=734
+        }
         deleteClothes(kiyafet_id: any) {
           const body = {
             Token: this.getToken(),
@@ -199,7 +222,34 @@ export class ConnectDbService {
               );
             }
             
-            
+            getAktifClothes() {
+              const body = {
+                Token: this.getToken(),
+                DataStoreId: '54524581455213527462',
+                Operation: 'read',
+                Encrypted: 1951,
+                Data: `select * from \"postgres\".public.botas_cpb where dagitim_planlandi_mi_aktif_verildi = 'AKTİF' and sicil_no=${this.getUserInformation2} `
+              };
+              return this.http.post(baseUrl + 'Applications/DataOps', body).pipe(
+                map((response: any) => {
+                  return response.message;
+                })
+              );
+            }
+            getPasifClothes() {
+              const body = {
+                Token: this.getToken(),
+                DataStoreId: '54524581455213527462',
+                Operation: 'read',
+                Encrypted: 1951,
+                Data: `select * from \"postgres\".public.botas_cpb where dagitim_planlandi_mi_aktif_verildi = 'VERİLDİ' and sicil_no=${this.getUserInformation2} `
+              };
+              return this.http.post(baseUrl + 'Applications/DataOps', body).pipe(
+                map((response: any) => {
+                  return response.message;
+                })
+              );
+            }
 
     }
 

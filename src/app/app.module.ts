@@ -14,7 +14,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSortModule } from '@angular/material/sort';
-
+import {MatRadioModule} from '@angular/material/radio'
 import { MatTableDataSource } from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
@@ -30,7 +30,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ClothesTableComponent } from './components/clothes-table/clothes-table.component';
 import { ClothesInputComponent } from './components/clothes-input/clothes-input.component';
-import { ClothesInputUpdateComponent } from './components/clothes-input-update/clothes-input-update.component'
+import { ClothesInputUpdateComponent } from './components/clothes-input-update/clothes-input-update.component';
+import { MessageComponent } from './components/message/message.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,8 @@ import { ClothesInputUpdateComponent } from './components/clothes-input-update/c
     TableInputUpdateComponent,
     ClothesTableComponent,
     ClothesInputComponent,
-    ClothesInputUpdateComponent
+    ClothesInputUpdateComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,8 @@ import { ClothesInputUpdateComponent } from './components/clothes-input-update/c
     MatDialogModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
-    MatSortModule
+    MatSortModule,
+    MatRadioModule
     
 
   ],
