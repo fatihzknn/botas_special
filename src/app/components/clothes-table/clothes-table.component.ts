@@ -45,7 +45,7 @@ export class ClothesTableComponent implements OnInit {
       this.clothesArray = res;
       this.dataSource = new MatTableDataSource<Product>(this.clothesArray);
       this.dataSource.paginator = this.paginator;
-      console.log(this.clothesArray);
+      
       
     });
     

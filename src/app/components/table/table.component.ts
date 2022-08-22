@@ -129,36 +129,35 @@ export class TableComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   readClothesCount(){
-    this.connectService.getClothesCount().subscribe((res) => {
-      this.count = res[0].count
-      
-      
-    });
+    
   }
   openDialog3(sicil_no:any,surname:any){
+    this.count = 0
     this.connectService.getUserInformation2= sicil_no;
-    this.readClothesCount()
-    console.log(this.count)
+    this.connectService.getClothesCount().subscribe((res) => {
+      this.count = res[0].count
+      console.log(this.count)
+      if(this.count == 0){
+        this.dialog.open(MessageComponent,{
+          width:"1050px",
+          data:{employee:sicil_no, nameSurname: surname }
+          
+        })
+      }
+      else{
+        //this.connectService.getUserInformation2= sicil_no;
+          
+        this.dialog.open(ClothesTableComponent,{
+          width:"1050px",
+          data:{employee:sicil_no, nameSurname: surname }
+          
+        })
+       
+        }
+    });
     
-if(this.count == 0){
-  
-    
-  this.dialog.open(MessageComponent,{
-    width:"1050px",
-    data:{employee:sicil_no, nameSurname: surname }
-    
-  })
-}
-else{
-  //this.connectService.getUserInformation2= sicil_no;
-    
-  this.dialog.open(ClothesTableComponent,{
-    width:"1050px",
-    data:{employee:sicil_no, nameSurname: surname }
-    
-  })
  
-  }
+
 }
 
  
