@@ -9,7 +9,7 @@ export interface Product{
     ayak_no: number,
     kan_grubu: string,
     cinsiyet: boolean,
-    ilk_yardimci_sertifikasi_var_mi: boolean,
+    ilk_yardim: boolean,
     kkd_dagitim_dayanagi: string,
     donem: string,
     kkd_ozellik: string,

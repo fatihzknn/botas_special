@@ -10,11 +10,13 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./table-input.component.scss']
 })
 export class TableInputComponent implements OnInit {
-
+  
   constructor(private dialogRef:MatDialogRef<TableInputComponent>,private fb:FormBuilder, private connectService:ConnectDbService) { }
 
-  employees:Employee[]=[];
+  sicil_no:[] = []
   formGrup!:FormGroup;
+  
+  employeeArray:Employee[]=[];
   ngOnInit(): void {
     this.formGrup = this.fb.group({
       sicil_no:['', Validators.required],
@@ -34,25 +36,47 @@ export class TableInputComponent implements OnInit {
     return this.formGrup.controls;
   }
 
+  readEmployee(){
+    this.connectService.getEmployees().subscribe((res) => {
+      this.employeeArray = res;
+    });
 
+  }
   saveEmployee(){
-    if (this.formGrup.valid){
-      console.log(this.formGrup.value)
-    let employee = Object.assign(this.formGrup.value, {} as Employee)
-    this.connectService.insertEmployee(employee).subscribe(res => {
-      console.log(res)
-      alert("Çalışan Kaydedildi")
-    })
-    }
-    else{
-      alert("Tüm boşlukları doldurunuz")
-    }
+    this.connectService.getSicilNo().subscribe((res) => {
+      this.sicil_no = res;
+      console.log(this.sicil_no)
+      if (this.formGrup.valid){  
+        let employee = Object.assign(this.formGrup.value, {} as Employee)
+        this.sicil_no.forEach(element => {
+          if(element== employee.sicil_no ){
+            alert("Aynı Sicil Numarasında kayıt bulunmaktadır.")
+          }
+        });
+        this.connectService.insertEmployee(employee).subscribe(res => {
+          console.log(res)
+          alert("Çalışan Kaydedildi")
+        })
+        }
+        else{
+          alert("Tüm boşlukları doldurunuz")
+        }
+    });
+    
+    
+    
   }
   refresh(){
-    window.location.reload(); 
+    //window.location.reload(); 
 
   }
   cancel(){
     this.dialogRef.close()
+  }
+
+  readSicilNo(){
+    this.connectService.getSicilNo().subscribe((res) => {
+      this.sicil_no = res[0];
+    });
   }
 }

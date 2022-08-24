@@ -31,7 +31,14 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ClothesTableComponent } from './components/clothes-table/clothes-table.component';
 import { ClothesInputComponent } from './components/clothes-input/clothes-input.component';
 import { ClothesInputUpdateComponent } from './components/clothes-input-update/clothes-input-update.component';
-import { MessageComponent } from './components/message/message.component'
+import { MessageComponent } from './components/message/message.component';
+import { KiyafetTableComponent } from './components/kiyafet-table/kiyafet-table.component';
+import { HomeComponent } from './components/home/home.component';
+import { LeftbaComponent } from './components/leftba/leftba.component'
+import { MatListModule } from '@angular/material/list';
+import { KiyafetUpdateComponent } from './components/kiyafet-update/kiyafet-update.component';
+import { KiyafetInputComponent } from './components/kiyafet-input/kiyafet-input.component';
+import { OrderInputComponent } from './components/order-input/order-input.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +49,13 @@ import { MessageComponent } from './components/message/message.component'
     ClothesTableComponent,
     ClothesInputComponent,
     ClothesInputUpdateComponent,
-    MessageComponent
+    MessageComponent,
+    KiyafetTableComponent,
+    HomeComponent,
+    LeftbaComponent,
+    KiyafetUpdateComponent,
+    KiyafetInputComponent,
+    OrderInputComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +78,9 @@ import { MessageComponent } from './components/message/message.component'
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatSortModule,
-    MatRadioModule
+    MatRadioModule,
+    MatListModule,
+    
     
 
   ],

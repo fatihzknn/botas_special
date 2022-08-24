@@ -19,6 +19,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class ClothesTableComponent implements OnInit {
   clothesArray: Product[] = [];
   clothesAktifArray: Product[] = [];
+  
 
   dataSource = new MatTableDataSource<Product>(this.clothesArray);
   displayedColumns: string[] = ["kiyafet_id","sicil_no","kkd_malzeme_cinsi","kkd_ozellik","verildigi_tarih","kkd_dagitim_dayanagi","kkd_kullanim_suresi","donem","yil","sonraki_yil","alacak_bilgisi","aldi_bilgisi","durum_belirlenen_sure_icinde_mi_sure_asildi_mi","dagitim_planlandi_mi_aktif_verildi","Sil","Güncelle"];
@@ -50,6 +51,7 @@ export class ClothesTableComponent implements OnInit {
     });
     
   }
+  
 
   openDialog() {
     this.dialog.open(ClothesInputComponent, {
