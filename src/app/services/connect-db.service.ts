@@ -340,6 +340,21 @@ export class ConnectDbService {
               };
               return this.http.post(baseUrl + 'Applications/DataOps', body)
             }
+
+            getFeatures() {
+              const body = {
+                Token: this.getToken(),
+                DataStoreId: '77873244628478578536',
+                Operation: 'read',
+                Encrypted: 1951,
+                Data: `select * from \"postgres\".public.botas_kiyafet_ozellik`
+              };
+              return this.http.post(baseUrl + 'Applications/DataOps', body).pipe(
+                map((response: any) => {
+                  return response.message;
+                })
+              );
+            }
     }
 
 

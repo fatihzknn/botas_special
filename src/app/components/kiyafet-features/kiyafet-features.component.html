@@ -11,7 +11,24 @@
       <td class="aw">
           {{data.clothes_name}} Özellik Listesi
         </td>
-        <!-- <div class="radios">
+        
+        <td class="button"> <button style="background-color:rgb(3, 131, 3) ;" mat-mini-fab color="accent" aria-label="Example icon button with a delete icon" >
+            <mat-icon>add</mat-icon>
+          </button>  
+        </td> 
+
+    </table>
+
+    <div class="mat-elevation-z8">
+    <table class="font"  mat-table [dataSource]="dataSource">
+
+       <ng-container matColumnDef="ozellik_adi">
+        <th class="sicil th-center bold" mat-header-cell *matHeaderCellDef> Ozellik Adı</th>
+        <td class="font" mat-cell *matCellDef="let element"> {{element.ozellik_adi}} </td>
+      </ng-container>
+        
+      
+      <!-- <div class="radios">
           <mat-radio-group aria-label="Select an option">
             <mat-radio-button class="radio1" (change)="readClothes()">Hepsi</mat-radio-button>
             <mat-radio-button class="radio2" (change)="getAktifClothes()" value="1">Aktif</mat-radio-button>
