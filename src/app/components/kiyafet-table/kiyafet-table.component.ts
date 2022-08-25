@@ -1,3 +1,4 @@
+import { OrderInputComponent } from './../order-input/order-input.component';
 import { KiyafetUpdateComponent } from './../kiyafet-update/kiyafet-update.component';
 import { Clothes } from './../../models/clothes';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
@@ -64,6 +65,11 @@ export class KiyafetTableComponent implements OnInit {
   refresh(){
     this.connectService.getClothesForTable().subscribe((data: Clothes[]) => {
       this.dataSource.data = data;
+    })
+  }
+  openDialog3(){
+    this.dialog.open(OrderInputComponent,{
+      data:{ }
     })
   }
 
