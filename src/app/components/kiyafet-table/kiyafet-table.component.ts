@@ -1,3 +1,4 @@
+import { KiyafetFeaturesComponent } from './../kiyafet-features/kiyafet-features.component';
 import { OrderInputComponent } from './../order-input/order-input.component';
 import { KiyafetUpdateComponent } from './../kiyafet-update/kiyafet-update.component';
 import { Clothes } from './../../models/clothes';
@@ -22,7 +23,7 @@ export class KiyafetTableComponent implements OnInit {
   
 
   dataSource = new MatTableDataSource<Clothes>(this.clothesArray);
-  displayedColumns: string[] = ["kiyafet_no","kiyafet_adi","kullanim_suresi","SiparişVer","Güncelle","Sil",];
+  displayedColumns: string[] = ["kiyafet_adi","kullanim_suresi","SiparişVer","Güncelle","Sil","Ozellik"];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(public dialog: MatDialog, private router: Router, private connectService: ConnectDbService) { }
     formGrup!:FormGroup;
@@ -72,6 +73,16 @@ export class KiyafetTableComponent implements OnInit {
       data:{ }
     })
   }
+  openDialog4(kiyafet_no:any, kiyafet_adi:any){
+    this.dialog.open(KiyafetFeaturesComponent,{
+      width:"1050px",
+      data:{clothes_no:kiyafet_no, clothes_name: kiyafet_adi }
+      
+    })
+    }
+
+  }
+  
 
   // openDialog() {
   //   this.dialog.open(ClothesInputComponent, {
@@ -117,4 +128,4 @@ export class KiyafetTableComponent implements OnInit {
 
  
 
-}
+

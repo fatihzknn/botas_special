@@ -21,7 +21,7 @@ export class ConnectDbService {
   constructor(private http:HttpClient) { }
 
   getToken() { // ************
-    return "12486273587667512333"
+    return "44612627631155447683"
     //return localStorage.getItem('token')
   }
 
@@ -314,7 +314,7 @@ export class ConnectDbService {
                 Operation: 'update',
                 Encrypted: 1951,
                 Data:
-                  `Update \"postgres\".public.botas_kiyafetler2 Set kiyafet_adi='${data.kiyafet_adi}',kullanim_suresi='${data.kullanim_suresi}'
+                  `Update \"postgres\".public.botas_kiyafetler2 Set kiyafet_adi='${data.kiyafet_adi}',kullanim_suresi='${data.kullanim_suresi}',kiyafet_turu='${data.kiyafet_turu}'
                   WHERE kiyafet_no = ${this.getUserInformation3.kiyafet_no}`
               };
               return this.http.post(baseUrl + 'Applications/DataOps', body);
@@ -325,7 +325,7 @@ export class ConnectDbService {
                 DataStoreId: '58511731646476236775',
                 Operation: 'insert',
                 Encrypted: 1951,
-                Data: `Insert into "postgres".public.botas_kiyafetler2(kiyafet_adi,kullanim_suresi) values('${data.kiyafet_adi}','${data.kullanim_suresi}')`,
+                Data: `Insert into "postgres".public.botas_kiyafetler2(kiyafet_adi,kullanim_suresi,kiyafet_turu) values('${data.kiyafet_adi}','${data.kullanim_suresi}','${data.kiyafet_turu}')`,
               };
               return this.http.post(baseUrl + 'Applications/DataOps', body);
             

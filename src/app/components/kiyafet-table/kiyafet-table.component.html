@@ -12,17 +12,14 @@
       <div class="mat-elevation-z8">
       <table class="font"  mat-table [dataSource]="dataSource">
 
-         <ng-container matColumnDef="kiyafet_no">
-          <th class="sicil th-center bold" mat-header-cell *matHeaderCellDef>Kıyafet Numarası</th>
-          <td class="font" mat-cell *matCellDef="let element"> {{element.kiyafet_no}} </td>
-        </ng-container>
+        
         <ng-container matColumnDef="kiyafet_adi">
           <th class="sicil th-center bold" mat-header-cell *matHeaderCellDef>Kıyafet Adı</th>
           <td class="font" mat-cell *matCellDef="let element"> {{element.kiyafet_adi}} </td>
         </ng-container>
         <ng-container matColumnDef="kullanim_suresi">
             <th class="sicil th-center bold" mat-header-cell *matHeaderCellDef>Kullanım Süresi</th>
-            <td class="font" mat-cell *matCellDef="let element"> {{element.kullanim_suresi}} </td>
+            <td class="font" mat-cell *matCellDef="let element"> {{element.kullanim_suresi}} Yıl </td>
           </ng-container>
 
         <ng-container class="bold" matColumnDef="SiparişVer">
@@ -43,6 +40,13 @@
           <th mat-header-cell *matHeaderCellDef></th>
           <td mat-cell *matCellDef="let element"><button mat-mini-fab color="warn" aria-label="Example icon button with a delete icon" (click)="deleteClothes(element.kiyafet_no)">
             <mat-icon>delete</mat-icon>
+          </button>
+          </td>
+        </ng-container>
+        <ng-container class="bold" matColumnDef="Ozellik">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element"><button mat-mini-fab color="warn" aria-label="Example icon button with a delete icon" (click)="openDialog4(element.kiyafet_no,element.kiyafet_adi)">
+            <mat-icon>create icon</mat-icon>
           </button>
           </td>
         </ng-container>

@@ -1,11 +1,6 @@
 <form class="example-form" [formGroup]="formGrup">
     <table>
-    <td>
-      <mat-form-field class="example-full-width" id="x" appearance="fill">
-      <mat-label>Kıyafet Numarası</mat-label>
-      <input readonly formControlName="kiyafet_no" matInput>
-    </mat-form-field>
-  </td>
+
   <td>
     <mat-form-field class="example-full-width" id="x" appearance="fill">
       <mat-label>Kıyafet Adı</mat-label>
@@ -16,6 +11,15 @@
     <mat-form-field class="example-full-width" id="x" appearance="fill">
       <mat-label>Kullanım Süresi</mat-label>
       <input  type="text" formControlName="kullanim_suresi" matInput>
+    </mat-form-field>
+  </td>
+  <td>
+    <mat-form-field  id="y" appearance="fill">
+      <mat-label>Kıyafet Türü</mat-label>
+      <mat-select formControlName = "kiyafet_turu">
+        <mat-option value="1">Elbise</mat-option>
+        <mat-option value="0">Ayakkabı</mat-option>
+      </mat-select>
     </mat-form-field>
   </td>
 

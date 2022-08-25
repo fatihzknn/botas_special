@@ -1,0 +1,127 @@
+<!-- <div class="dd">
+    <button style=" background-color:transparent;" mat-mini-fab color="" aria-label="Example icon button with a delete icon" (click)="cancel()">
+
+      <mat-icon>close</mat-icon>
+    </button>
+</div> -->
+
+  
+     <table>
+      <tr>
+      <td class="aw">
+          {{data.clothes_name}} Özellik Listesi
+        </td>
+        <!-- <div class="radios">
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button class="radio1" (change)="readClothes()">Hepsi</mat-radio-button>
+            <mat-radio-button class="radio2" (change)="getAktifClothes()" value="1">Aktif</mat-radio-button>
+            <mat-radio-button class="radio3" (change)="getVerildi()" value="2">Verildi</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <td class="button"> <button style="background-color:rgb(3, 131, 3) ;" mat-mini-fab color="accent" aria-label="Example icon button with a delete icon" (click)="openDialog()">
+          <mat-icon>add</mat-icon>
+        </button>  
+      </td> 
+
+      </tr> 
+    </table>
+
+      <div class="mat-elevation-z8">
+      <table class="font"  mat-table [dataSource]="dataSource">
+
+         <ng-container matColumnDef="sicil_no">
+          <th class="sicil th-center bold" mat-header-cell *matHeaderCellDef> Sicil No</th>
+          <td class="font" mat-cell *matCellDef="let element"> {{element.sicil_no}} </td>
+        </ng-container>
+        <ng-container matColumnDef="kiyafet_id">
+          <th class="sicil th-center bold" mat-header-cell *matHeaderCellDef> Kıyafet Id</th>
+          <td class="font" mat-cell *matCellDef="let element"> {{element.kiyafet_id}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="kkd_dagitim_dayanagi">
+          <th class="a th-center bold" mat-header-cell *matHeaderCellDef> KKD Dağıtım Dayanağı </th>
+          <td class="font txtAlign" mat-cell *matCellDef="let element"> {{element.kkd_dagitim_dayanagi}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="donem">
+          <th class="a th-center bold" mat-header-cell *matHeaderCellDef>Dönem </th>
+          <td class="font txtAlign" mat-cell *matCellDef="let element"> {{element.donem}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="kkd_ozellik">
+          <th class="a th-center bold" mat-header-cell *matHeaderCellDef>KKD Özellik </th>
+          <td class="font txtAlign" mat-cell *matCellDef="let element"> {{element.kkd_ozellik}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="kkd_malzeme_cinsi">
+          <th class="a th-center bold" mat-header-cell *matHeaderCellDef>KKD Malzeme Cinsi </th>
+          <td class="font txtAlign" mat-cell *matCellDef="let element"> {{element.kkd_malzeme_cinsi}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="yil">
+          <th class="a th-center bold" mat-header-cell *matHeaderCellDef>Yıl </th>
+          <td class="font txtAlign" mat-cell *matCellDef="let element"> {{element.yil}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="verildigi_tarih">
+          <th class="a th-center bold" mat-header-cell *matHeaderCellDef>Verildiği Tarih </th>
+          <td class="font txtAlign" mat-cell *matCellDef="let element"> {{element.verildigi_tarih}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="kkd_kullanim_suresi">
+          <th class="a th-center bold" mat-header-cell *matHeaderCellDef>KKD Kullanım Süresi </th>
+          <td class="font txtAlign" mat-cell *matCellDef="let element"> {{element.kkd_kullanim_suresi}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="sonraki_yil">
+          <th class="a th-center bold" mat-header-cell *matHeaderCellDef>Sonraki Yıl </th>
+          <td class="font txtAlign" mat-cell *matCellDef="let element"> {{element.sonraki_yil}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="alacak_bilgisi">
+          <th class="a th-center bold" mat-header-cell *matHeaderCellDef>Alacak Bilgisi </th>
+          <td class="font txtAlign" mat-cell *matCellDef="let element"> {{element.alacak_bilgisi}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="aldi_bilgisi">
+          <th class="a th-center bold" mat-header-cell *matHeaderCellDef>Aldı Bilgisi </th>
+          <td class="font txtAlign" mat-cell *matCellDef="let element"> {{element.aldi_bilgisi}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="durum_belirlenen_sure_icinde_mi_sure_asildi_mi">
+          <th class="a th-center bold" mat-header-cell *matHeaderCellDef>Durum</th>
+          <td class="font txtAlign" mat-cell *matCellDef="let element"> {{element.durum_belirlenen_sure_icinde_mi_sure_asildi_mi}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="dagitim_planlandi_mi_aktif_verildi">
+          <th class="a th-center bold" mat-header-cell *matHeaderCellDef>Dağıtım Planlandı Mı? </th>
+          <td class="font txtAlign" mat-cell *matCellDef="let element"> {{element.dagitim_planlandi_mi_aktif_verildi}} </td>
+        </ng-container>
+
+        <ng-container class="bold" matColumnDef="Sil">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element"><button mat-mini-fab color="warn" aria-label="Example icon button with a delete icon" (click)="deleteClothe(element.kiyafet_id)" (click)="refresh()">
+            <mat-icon>delete</mat-icon>
+          </button>
+          </td>
+        </ng-container>
+      
+        <ng-container class=" bold" matColumnDef="Güncelle">
+          <th class="a bold" mat-header-cell *matHeaderCellDef> </th>
+          <td mat-cell *matCellDef="let element"> <button style="background-color:rgb(68, 70, 70);" mat-mini-fab color="primary" aria-label="Example icon button with a delete icon" (click)="openDialog2(element)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      
+      <mat-paginator [pageSizeOptions]="[10]"
+                     showFirstLastButtons 
+                     aria-label="Select page of periodic elements">
+      </mat-paginator>
+      -->
+<!-- </div> -->

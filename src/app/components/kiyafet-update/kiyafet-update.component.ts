@@ -20,7 +20,8 @@ export class KiyafetUpdateComponent implements OnInit {
     this.formGrup = this.fb.group({
       kiyafet_no:[this.data.clothes.kiyafet_no, Validators.required],
       kiyafet_adi:[this.data.clothes.kiyafet_adi, Validators.required],
-      kullanim_suresi:[this.data.clothes.kullanim_suresi, Validators.required]
+      kullanim_suresi:[this.data.clothes.kullanim_suresi, Validators.required],
+      kiyafet_turu:[this.data.clothes.kiyafet_turu, Validators.required]
     })
   }
 

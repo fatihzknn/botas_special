@@ -38,7 +38,8 @@ import { LeftbaComponent } from './components/leftba/leftba.component'
 import { MatListModule } from '@angular/material/list';
 import { KiyafetUpdateComponent } from './components/kiyafet-update/kiyafet-update.component';
 import { KiyafetInputComponent } from './components/kiyafet-input/kiyafet-input.component';
-import { OrderInputComponent } from './components/order-input/order-input.component'
+import { OrderInputComponent } from './components/order-input/order-input.component';
+import { KiyafetFeaturesComponent } from './components/kiyafet-features/kiyafet-features.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +56,8 @@ import { OrderInputComponent } from './components/order-input/order-input.compon
     LeftbaComponent,
     KiyafetUpdateComponent,
     KiyafetInputComponent,
-    OrderInputComponent
+    OrderInputComponent,
+    KiyafetFeaturesComponent
   ],
   imports: [
     BrowserModule,

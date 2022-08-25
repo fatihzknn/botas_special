@@ -128,9 +128,7 @@ export class TableComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  readClothesCount(){
-    
-  }
+ 
   openDialog3(sicil_no:any,surname:any){
     this.count = 0
     this.connectService.getUserInformation2= sicil_no;

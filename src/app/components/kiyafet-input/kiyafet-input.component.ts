@@ -37,6 +37,7 @@ export class KiyafetInputComponent implements OnInit {
     this.formGrup = this.fb.group({
       kiyafet_adi:['', Validators.required],
       kullanim_suresi:['', Validators.required],
+      kiyafet_turu:['', Validators.required],
     })
     
   }
