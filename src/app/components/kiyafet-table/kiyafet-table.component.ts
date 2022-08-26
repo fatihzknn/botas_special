@@ -33,6 +33,10 @@ export class KiyafetTableComponent implements OnInit {
     this.readClothes();
 
   }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
   readClothes() {
     this.connectService.getClothesForTable().subscribe((res) => {
       this.clothesArray = res;
