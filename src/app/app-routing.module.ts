@@ -4,10 +4,12 @@ import { TableInputComponent } from './components/table-input/table-input.compon
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TableComponent } from './components/table/table.component';
+import { OrderTableComponent } from './components/order-table/order-table.component';
 
 const routes: Routes = [
   { path: 'table', component: TableComponent },
-  { path: 'kiyafet', component: KiyafetTableComponent }
+  { path: 'kiyafet', component: KiyafetTableComponent },
+  { path: 'order-table', component:OrderTableComponent }
   
   // { path: 'bagis', component: BagisComponent },
   // { path: 'bagis-grid', component: BagisGridComponent },

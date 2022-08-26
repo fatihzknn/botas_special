@@ -1,38 +1,39 @@
 
-  <h2 class="aw">ÇALIŞAN KIYAFET YÖNETİMİ</h2>
+  <h2 class="aw">SİPARİŞ</h2>
 
-  <div class="mat-elevation-z8">
-    <mat-form-field class="filter" appearance="standard">
-      <mat-label>Ara..</mat-label>
-      <input matInput #input>
-    </mat-form-field>
-    
-    <table 
-    matSort matSortActive="sicil_no" matSortDisableClear matSortDirection="desc">     
+    <table mat-table [dataSource]="dataSource">     
       
-      <ng-container  matColumnDef="sicil_no">
-        <th class="bold" mat-header-cell *matHeaderCellDef mat-sort-header> Sicil No</th>
-        <td  mat-cell *matCellDef="let element"> {{element.sicil_no}} </td>
+      
+      <ng-container matColumnDef="kiyafet_adi">
+        <th class="bold" mat-header-cell *matHeaderCellDef> Kıyafet Adı </th>
+        <td mat-cell *matCellDef="let element"> {{element.kiyafet_adi}} </td>
       </ng-container>
   
-      <ng-container matColumnDef="ad_soyad">
-        <th class="bold" mat-header-cell *matHeaderCellDef mat-sort-header=> Ad Soyad </th>
-        <td mat-cell *matCellDef="let element"> {{element.ad_soyad}} </td>
+      <ng-container matColumnDef="adet">
+        <th class="bold" mat-header-cell *matHeaderCellDef> Adet </th>
+        <td mat-cell *matCellDef="let element"> {{element.adet}} </td>
       </ng-container>
   
-      <ng-container matColumnDef="unite">
-        <th class="bold" mat-header-cell *matHeaderCellDef> Ünite </th>
-        <td mat-cell *matCellDef="let element"> {{element.unite}} </td>
-      </ng-container>
-  
-      <ng-container matColumnDef="alt_birim">
-        <th class="bold" mat-header-cell *matHeaderCellDef> Alt Birim </th>
-        <td mat-cell *matCellDef="let element"> {{element.alt_birim}} </td>
+      <ng-container matColumnDef="beden">
+        <th class="bold" mat-header-cell *matHeaderCellDef> Beden </th>
+        <td mat-cell *matCellDef="let element"> {{element.beden}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="unvan">
-        <th class="bold" mat-header-cell *matHeaderCellDef> Unvan </th>
-        <td mat-cell *matCellDef="let element"> {{element.unvan}} </td>
+      <ng-container matColumnDef="siparis_tarihi">
+        <th class="bold" mat-header-cell *matHeaderCellDef> Sipariş Tarihi </th>
+        <td mat-cell *matCellDef="let element"> {{element.siparis_tarihi}} </td>
+      </ng-container>
+      <ng-container matColumnDef="sezon">
+        <th class="bold" mat-header-cell *matHeaderCellDef> Sezon </th>
+        <td mat-cell *matCellDef="let element"> {{element.sezon}} </td>
+      </ng-container>
+      <ng-container matColumnDef="ozellik">
+        <th class="bold" mat-header-cell *matHeaderCellDef> Özellik </th>
+        <td mat-cell *matCellDef="let element"> {{element.ozellik}} </td>
+      </ng-container>
+      <ng-container matColumnDef="birim">
+        <th class="bold" mat-header-cell *matHeaderCellDef> Birim </th>
+        <td mat-cell *matCellDef="let element"> {{element.birim}} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
