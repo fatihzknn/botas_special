@@ -39,7 +39,9 @@ import { MatListModule } from '@angular/material/list';
 import { KiyafetUpdateComponent } from './components/kiyafet-update/kiyafet-update.component';
 import { KiyafetInputComponent } from './components/kiyafet-input/kiyafet-input.component';
 import { OrderInputComponent } from './components/order-input/order-input.component';
-import { KiyafetFeaturesComponent } from './components/kiyafet-features/kiyafet-features.component'
+import { KiyafetFeaturesComponent } from './components/kiyafet-features/kiyafet-features.component';
+import { OrderTableComponent } from './components/order-table/order-table.component';
+import { KiyafetFeaturesInputComponent } from './components/kiyafet-features-input/kiyafet-features-input.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +59,9 @@ import { KiyafetFeaturesComponent } from './components/kiyafet-features/kiyafet-
     KiyafetUpdateComponent,
     KiyafetInputComponent,
     OrderInputComponent,
-    KiyafetFeaturesComponent
+    KiyafetFeaturesComponent,
+    OrderTableComponent,
+    KiyafetFeaturesInputComponent
   ],
   imports: [
     BrowserModule,

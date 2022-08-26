@@ -1,12 +1,14 @@
 <form class="example-form" [formGroup]="formGrup">
-    <table>
-
+    
   <td>
     <mat-form-field class="example-full-width" id="x" appearance="fill">
       <mat-label>Kıyafet Adı</mat-label>
       <input  type="text" formControlName="kiyafet_adi" matInput>
     </mat-form-field>
   </td>
+  <table>
+
+  
   <td>
     <mat-form-field class="example-full-width" id="x" appearance="fill">
       <mat-label>Kullanım Süresi</mat-label>
@@ -27,7 +29,7 @@
   
   
   
-  <div class="button">
+  <div class="button ab">
     <button style="width: 150px;" mat-raised-button color="primary" (click)="updateClothes()" (click)="refresh()">Güncelle</button>
       <button (click)="cancel()"
         style="width: 150px"

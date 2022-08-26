@@ -1,0 +1,90 @@
+<table>
+    <td>
+      <mat-form-field class="example-full-width" id="x" appearance="fill">
+      <mat-label>Sezon</mat-label>
+      <input matInput>
+    </mat-form-field></td>
+  
+    <td>
+      <mat-form-field class="example-full-width" id="x" appearance="fill">
+        <mat-label>Özellik</mat-label>
+        <input  type="text" matInput>
+      </mat-form-field>
+    </td>
+  
+  </table>
+ 
+  
+    <table>
+        <td>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Birim</mat-label>
+            <input type="text" matInput >
+          </mat-form-field>
+        </td>
+      <td>
+        <mat-form-field class="example-full-width" id="x" appearance="fill">
+        <mat-label>Adet</mat-label>
+        <input type="text" matInput>
+      </mat-form-field>
+    </td>
+</table>
+<table>
+        <!-- <td>
+            <mat-form-field class="minik" appearance="fill">
+                <mat-label>Beden</mat-label>
+                <input type="text" matInput >
+              </mat-form-field>
+        </td> -->
+        <td>
+          <mat-form-field class="minik" appearance="fill">
+            <mat-label>Beden</mat-label>
+            <mat-select>
+              <mat-option value="YAZLIK">2XS</mat-option>
+              <mat-option value="KIŞLIK">XS</mat-option>
+              <mat-option value="KIŞLIK">S</mat-option>
+              <mat-option value="KIŞLIK">M</mat-option>
+              <mat-option value="KIŞLIK">L</mat-option>
+              <mat-option value="KIŞLIK">XL</mat-option>
+              <mat-option value="KIŞLIK">2XL</mat-option>
+              <mat-option value="KIŞLIK">3XL</mat-option>
+              <mat-option value="KIŞLIK">36</mat-option>
+              <mat-option value="KIŞLIK">37</mat-option>
+              <mat-option value="KIŞLIK">38</mat-option>
+              <mat-option value="KIŞLIK">39</mat-option>
+              <mat-option value="KIŞLIK">40</mat-option>
+              <mat-option value="KIŞLIK">41</mat-option>
+              <mat-option value="KIŞLIK">42</mat-option>
+              <mat-option value="KIŞLIK">43</mat-option>
+              <mat-option value="KIŞLIK">44</mat-option>
+              <mat-option value="KIŞLIK">45</mat-option>
+              <mat-option value="KIŞLIK">46</mat-option> 
+            </mat-select>
+          </mat-form-field>
+        </td>
+        <!-- <td>
+             <h4>XS</h4>
+            <mat-form-field class="minik" appearance="fill">
+                <mat-label>XS</mat-label>
+                <input type="text" matInput >
+              </mat-form-field>
+        </td> -->
+
+    </table>
+
+ 
+      
+  
+  <div class="button">
+    <button style="width: 150px;" mat-raised-button color="primary" >Kaydet</button>
+    
+    <button
+        style="width: 150px"
+        mat-raised-button
+        color="warn"
+        (click)="cancel()"
+      >
+        İptal
+      </button>
+    
+    </div>

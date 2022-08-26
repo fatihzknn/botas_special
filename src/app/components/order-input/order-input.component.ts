@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-order-input',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./order-input.component.scss']
 })
 export class OrderInputComponent implements OnInit {
-
-  constructor() { }
+  displayedColumns=[]
+  constructor(public dialogRef: MatDialogRef<OrderInputComponent>) { }
 
   ngOnInit(): void {
   }
-
+  cancel(){
+    this.dialogRef.close()
+  }
 }
