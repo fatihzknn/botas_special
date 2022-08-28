@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConnectDbService } from 'src/app/services/connect-db.service';
 import { KiyafetInputComponent } from '../kiyafet-input/kiyafet-input.component';
+import { OrderTableComponent } from '../order-table/order-table.component';
 
 @Component({
   selector: 'app-kiyafet-table',
@@ -71,11 +72,19 @@ export class KiyafetTableComponent implements OnInit {
     this.connectService.getClothesForTable().subscribe((data: Clothes[]) => {
       this.dataSource.data = data;
     })
+
   }
-  openDialog3(){
+  openDialog3(kiyafet_no:any,kiyafet_adi:any){
+    
+    this.connectService.getUserInformation4= kiyafet_no;
+    this.connectService.getClothesCount().subscribe((res) => {
     this.dialog.open(OrderInputComponent,{
-      data:{ }
-    })
+          width:"470px",
+          data:{kiyafet_no:kiyafet_no, kiyafet_adi: kiyafet_adi }
+          
+        })
+    });
+   
   }
   openDialog4(kiyafet_no:any, kiyafet_adi:any){
     this.dialog.open(KiyafetFeaturesComponent,{

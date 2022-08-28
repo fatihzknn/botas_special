@@ -22,7 +22,5 @@ export class MessageComponent implements OnInit {
       data: {},
     });
   }
-  ekleme(){
-    
-  }
+ 
 }

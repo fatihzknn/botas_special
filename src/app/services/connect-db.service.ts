@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 import { baseUrl } from '../utils/baseUrl';
 import { map } from 'rxjs';
 import { Product } from '../models/product';
+import { Order } from '../models/order';
 
 @Injectable({
   providedIn: 'root'
@@ -15,13 +16,15 @@ export class ConnectDbService {
   getUserInformation!:Employee;
   getUserInformation2!:Product
   getUserInformation3!:Clothes
+  getUserInformation4!:Clothes
+
 
 
 
   constructor(private http:HttpClient) { }
 
   getToken() { // ************
-    return "77438864521476285473"
+    return "66134176767857133217"
     //return localStorage.getItem('token')
   }
 
@@ -354,6 +357,31 @@ export class ConnectDbService {
                   return response.message;
                 })
               );
+            }
+            insertOrder(data:Order){
+              const body = {
+                Token: this.getToken(),
+                DataStoreId: '67285135834775547565',
+                Operation: 'insert',
+                Encrypted: 1951,
+                Data: `Insert into "postgres".public.botas_kiyafet_siparis(kiyafet_adi,adet,beden,siparis_tarihi,sezon,ozellik,birim) values('${data.kiyafet_adi}','${data.adet}','${data.beden}'),'${data.siparis_tarihi}','${data.sezon}','${data.ozellik}','${data.birim}')`,
+              };
+              return this.http.post(baseUrl + 'Applications/DataOps', body);
+            }
+            getClothesName(){
+              const body = {
+                Token: this.getToken(),
+                DataStoreId: '58511731646476236775',
+                Operation: 'read',
+                Encrypted: 1951,
+                Data: `select kiyafet_adi from \"postgres\".public.kiyafetler2 where kiyafet_no =${this.getUserInformation4}`,
+              };
+              return this.http.post(baseUrl + 'Applications/DataOps', body).pipe(
+                map((response: any) => {
+                  return response.message;
+                })
+              );
+
             }
     }
 
