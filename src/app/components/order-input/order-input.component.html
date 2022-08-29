@@ -1,14 +1,39 @@
+<form class="example-form" [formGroup]="formGrup">
+<table>
+  <td>
+    <mat-form-field class="example-full-width" id="x" appearance="fill">
+    <mat-label>Tedarikçi Adı</mat-label>
+    <mat-select formControlName = "tedarikci_adi" >
+      <mat-option *ngFor="let item of supplierName" [value]="item.tedarikci_adi">{{item.tedarikci_adi}}</mat-option>    
+    </mat-select>
+  </mat-form-field></td>
+
+  <td>
+    <mat-form-field class="example-full-width" id="x" appearance="fill">
+      <mat-label>Kıyafet Adı</mat-label>
+      <mat-select formControlName = "kiyafet_adi" >
+        <mat-option *ngFor="let item of clotheName" [value]="item.kiyafet_adi">{{item.kiyafet_adi}}</mat-option>    
+      </mat-select>
+    </mat-form-field>
+  </td>
+
+</table>
 <table>
     <td>
       <mat-form-field class="example-full-width" id="x" appearance="fill">
       <mat-label>Sezon</mat-label>
-      <input matInput>
+      <mat-select formControlName="sezon">
+        <mat-option value="YAZLIK">Yazlık</mat-option>
+        <mat-option value="KIŞLIK">Kışlık</mat-option>
+      </mat-select>
     </mat-form-field></td>
   
     <td>
       <mat-form-field class="example-full-width" id="x" appearance="fill">
         <mat-label>Özellik</mat-label>
-        <input  type="text" matInput>
+        <mat-select formControlName = "ozellik" >
+          <mat-option *ngFor="let item of featuresName" [value]="item.ozellik_adi">{{item.ozellik_adi}}</mat-option>    
+        </mat-select>
       </mat-form-field>
     </td>
   
@@ -19,16 +44,63 @@
         <td>
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Birim</mat-label>
-            <input type="text" matInput >
+            <mat-select formControlName="birim">
+              <mat-option value="TEK">Tek</mat-option>
+              <mat-option value="ÇİFT">Çift</mat-option>
+              <mat-option value="ADET">Adet</mat-option>
+            </mat-select>
           </mat-form-field>
         </td>
       <td>
         <mat-form-field class="example-full-width" id="x" appearance="fill">
         <mat-label>Adet</mat-label>
-        <input type="text" matInput>
+        <input type="text" formControlName="adet" matInput>
       </mat-form-field>
     </td>
 </table>
+    <table>
+        <td>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Fiyat</mat-label>
+            <input type="text" formControlName="fiyat" matInput >
+          </mat-form-field>
+        </td>
+      <td>
+        <mat-form-field class="example-full-width" id="x" appearance="fill">
+        <mat-label>Para Birimi</mat-label>
+        <mat-select formControlName="para_birimi">
+          <mat-option value="TL"><span style="font-size:20px;">
+            &#8378;
+         </span></mat-option>
+          <mat-option value="DOLAR"><span style="font-size:20px;">
+            &#36;
+         </span></mat-option>
+         <mat-option value="EURO"><span style="font-size:20px;">
+          &#8364;
+       </span></mat-option>          
+       <mat-option value="POUND"><span style="font-size:20px;">
+        &#163;
+     </span></mat-option>  
+       </mat-select>
+      </mat-form-field>
+    </td>
+</table>
+    <table>
+        <td>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Kur</mat-label>
+            <input type="text" formControlName="kur" matInput >
+          </mat-form-field>
+        </td>
+      <td>
+        <mat-form-field class="example-full-width" id="x" appearance="fill">
+        <mat-label>TL Fiyatı</mat-label>
+        <input type="text"formControlName="tl_fiyat"  matInput>
+      </mat-form-field>
+    </td>
+</table>
+
+
 <table>
         <!-- <td>
             <mat-form-field class="minik" appearance="fill">
@@ -39,7 +111,7 @@
         <td>
           <mat-form-field class="minik" appearance="fill">
             <mat-label>Beden</mat-label>
-            <mat-select>
+            <mat-select formControlName="beden">
               <mat-option value="2XS">2XS</mat-option>
               <mat-option value="XS">XS</mat-option>
               <mat-option value="S">S</mat-option>
@@ -62,6 +134,12 @@
             </mat-select>
           </mat-form-field>
         </td>
+        <td>
+          <mat-form-field class="example-full-width" id="x" appearance="fill">
+          <mat-label>Satın Alma Tarihi</mat-label>
+          <input type="date" formControlName="siparis_tarihi"  matInput>
+        </mat-form-field>
+      </td>
         <!-- <td>
              <h4>XS</h4>
             <mat-form-field class="minik" appearance="fill">
@@ -88,3 +166,4 @@
       </button>
     
     </div>
+  </form>

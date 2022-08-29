@@ -1,3 +1,4 @@
+import { OrderInputComponent } from './../order-input/order-input.component';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -15,7 +16,7 @@ import { ConnectDbService } from 'src/app/services/connect-db.service';
 })
 export class OrderTableComponent implements OnInit {
   orderArray: Order[]=[]
-  displayedColumns:string[] = ["kiyafet_adi","adet","beden","siparis_tarihi","sezon","ozellik","birim"];
+  displayedColumns:string[] = ["tedarikci_adi","kiyafet_adi","adet","beden","siparis_tarihi","sezon","ozellik","birim","fiyat","para_birimi","kur","tl_fiyat"];
   dataSource = new MatTableDataSource<Order>(this.orderArray)
   constructor(
   public dialog: MatDialog,
@@ -26,7 +27,24 @@ export class OrderTableComponent implements OnInit {
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   ngOnInit(): void {
+    this.readOrder()
+  }
+  openDialog(){
+    this.dialog.open(OrderInputComponent,{
+      data:{ }
+    })
+  }
+  readOrder(){
     
+    this.connectService.getOrder().subscribe(res => { 
+      
+      this.orderArray=res;
+      this.dataSource = new MatTableDataSource<Order>(this.orderArray)
+      this.dataSource.paginator=this.paginator;
+    
+      console.log(this.orderArray)
+
+    })
   }
 
 }

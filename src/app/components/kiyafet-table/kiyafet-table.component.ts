@@ -24,8 +24,7 @@ export class KiyafetTableComponent implements OnInit {
   
 
   dataSource = new MatTableDataSource<Clothes>(this.clothesArray);
-  displayedColumns: string[] = ["kiyafet_adi","kullanim_suresi","SiparişVer","Güncelle","Sil","Ozellik"];
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  displayedColumns: string[] = ["kiyafet_adi","kullanim_suresi","Güncelle","Sil","Ozellik"];  @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(public dialog: MatDialog, private router: Router, private connectService: ConnectDbService) { }
     formGrup!:FormGroup;
 

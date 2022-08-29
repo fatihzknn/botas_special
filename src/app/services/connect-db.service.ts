@@ -24,7 +24,7 @@ export class ConnectDbService {
   constructor(private http:HttpClient) { }
 
   getToken() { // ************
-    return "66134176767857133217"
+    return "32181731623158666181"
     //return localStorage.getItem('token')
   }
 
@@ -364,7 +364,7 @@ export class ConnectDbService {
                 DataStoreId: '67285135834775547565',
                 Operation: 'insert',
                 Encrypted: 1951,
-                Data: `Insert into "postgres".public.botas_kiyafet_siparis(kiyafet_adi,adet,beden,siparis_tarihi,sezon,ozellik,birim) values('${data.kiyafet_adi}','${data.adet}','${data.beden}'),'${data.siparis_tarihi}','${data.sezon}','${data.ozellik}','${data.birim}')`,
+                Data: `Insert into "postgres".public.botas_kiyafet_siparis(tedarikci_adi,kiyafet_adi,adet,beden,siparis_tarihi,sezon,ozellik,birim,fiyat,para_birimi,kur,tl_fiyat) values('${data.tedarikci_adi}','${data.kiyafet_adi}',${data.adet},'${data.beden}','${data.siparis_tarihi}','${data.sezon}','${data.ozellik}','${data.birim}',${data.fiyat},'${data.para_birimi}',${data.kur},${data.tl_fiyat})`,
               };
               return this.http.post(baseUrl + 'Applications/DataOps', body);
             }
@@ -374,7 +374,7 @@ export class ConnectDbService {
                 DataStoreId: '58511731646476236775',
                 Operation: 'read',
                 Encrypted: 1951,
-                Data: `select kiyafet_adi from \"postgres\".public.kiyafetler2 where kiyafet_no =${this.getUserInformation4}`,
+                Data: `select kiyafet_adi from \"postgres\".public.botas_kiyafetler2 `,
               };
               return this.http.post(baseUrl + 'Applications/DataOps', body).pipe(
                 map((response: any) => {
@@ -382,6 +382,50 @@ export class ConnectDbService {
                 })
               );
 
+            }
+            getSupplierName(){
+              const body = {
+                Token: this.getToken(),
+                DataStoreId: '24377433561311326857',
+                Operation: 'read',
+                Encrypted: 1951,
+                Data: `select tedarikci_adi from \"postgres\".public.botas_tedarikci `,
+              };
+              return this.http.post(baseUrl + 'Applications/DataOps', body).pipe(
+                map((response: any) => {
+                  return response.message;
+                })
+              );
+
+            }
+            getFeaturesName(){
+              const body = {
+                Token: this.getToken(),
+                DataStoreId: '77873244628478578536',
+                Operation: 'read',
+                Encrypted: 1951,
+                Data: `select ozellik_adi from \"postgres\".public.botas_kiyafet_ozellik `,
+              };
+              return this.http.post(baseUrl + 'Applications/DataOps', body).pipe(
+                map((response: any) => {
+                  return response.message;
+                })
+              );
+
+            }
+            getOrder(){
+              const body = {
+                Token: this.getToken(),
+                DataStoreId: '67285135834775547565',
+                Operation: 'read',
+                Encrypted: 1951,
+                Data: `select * from \"postgres\".public.botas_kiyafet_siparis`
+              };
+              return this.http.post(baseUrl + 'Applications/DataOps', body).pipe(
+                map((response: any) => {
+                  return response.message;
+                })
+              );
             }
     }
 

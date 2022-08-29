@@ -1,9 +1,16 @@
-
+<div class="button">
+  <button style="background-color:rgb(3, 131, 3) ;" mat-mini-fab color="accent" aria-label="Example icon button with a delete icon" (click)="openDialog()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
   <h2 class="aw">SİPARİŞ</h2>
 
     <table mat-table [dataSource]="dataSource">     
       
-      
+      <ng-container matColumnDef="tedarikci_adi">
+        <th class="bold" mat-header-cell *matHeaderCellDef> Tedarikçi Adı </th>
+        <td mat-cell *matCellDef="let element"> {{element.tedarikci_adi}} </td>
+      </ng-container>
       <ng-container matColumnDef="kiyafet_adi">
         <th class="bold" mat-header-cell *matHeaderCellDef> Kıyafet Adı </th>
         <td mat-cell *matCellDef="let element"> {{element.kiyafet_adi}} </td>
@@ -34,6 +41,22 @@
       <ng-container matColumnDef="birim">
         <th class="bold" mat-header-cell *matHeaderCellDef> Birim </th>
         <td mat-cell *matCellDef="let element"> {{element.birim}} </td>
+      </ng-container>
+      <ng-container matColumnDef="fiyat">
+        <th class="bold" mat-header-cell *matHeaderCellDef> Fiyat </th>
+        <td mat-cell *matCellDef="let element"> {{element.fiyat}} </td>
+      </ng-container>
+      <ng-container matColumnDef="para_birimi">
+        <th class="bold" mat-header-cell *matHeaderCellDef> Para Birimi </th>
+        <td mat-cell *matCellDef="let element"> {{element.para_birimi}} </td>
+      </ng-container>
+      <ng-container matColumnDef="kur">
+        <th class="bold" mat-header-cell *matHeaderCellDef> Kur </th>
+        <td mat-cell *matCellDef="let element"> {{element.kur}} </td>
+      </ng-container>
+      <ng-container matColumnDef="tl_fiyat">
+        <th class="bold" mat-header-cell *matHeaderCellDef> Tl Fiyat </th>
+        <td mat-cell *matCellDef="let element"> {{element.tl_fiyat}} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
