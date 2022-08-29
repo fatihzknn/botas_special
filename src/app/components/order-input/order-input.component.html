@@ -62,7 +62,7 @@
         <td>
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Fiyat</mat-label>
-            <input type="text" formControlName="fiyat" matInput >
+            <input type="text" formControlName="fiyat" (change)="calculateTl_fiyat()" matInput >
           </mat-form-field>
         </td>
       <td>
@@ -89,27 +89,21 @@
         <td>
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Kur</mat-label>
-            <input type="text" formControlName="kur" matInput >
+            <input type="text" formControlName="kur" (change)="calculateTl_fiyat()" matInput >
           </mat-form-field>
         </td>
       <td>
         <mat-form-field class="example-full-width" id="x" appearance="fill">
         <mat-label>TL Fiyatı</mat-label>
-        <input type="text"formControlName="tl_fiyat"  matInput>
+        <input readonly type="text"formControlName="tl_fiyat"  matInput>
       </mat-form-field>
     </td>
 </table>
 
 
 <table>
-        <!-- <td>
-            <mat-form-field class="minik" appearance="fill">
-                <mat-label>Beden</mat-label>
-                <input type="text" matInput >
-              </mat-form-field>
-        </td> -->
         <td>
-          <mat-form-field class="minik" appearance="fill">
+          <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Beden</mat-label>
             <mat-select formControlName="beden">
               <mat-option value="2XS">2XS</mat-option>

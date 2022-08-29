@@ -1,12 +1,15 @@
-<mat-nav-list class="a">
+<mat-nav-list class="a" >
+  <a id="s" mat-list-item routerLinkActive="list-item-active" [routerLink]="['/kiyafet']"><span style="font-size:28px;">	
+    🧥 </span> KIYAFET </a>
+    <a id="s" mat-list-item routerLinkActive="list-item-active" [routerLink]="['/table']"><span style="font-size:28px;color: black;">	
+      👷 </span> ÇALIŞAN </a>
+    <a id="s" mat-list-item routerLinkActive="list-item-active" [routerLink]="['/order-table']" >
+      <span style="font-size:28px;">	
+        🛒  </span>  SATIN ALMA
+    </a>
+    <a id="s" mat-list-item routerLinkActive="list-item-active" [routerLink]="['/suppliers']" >
+      <span style="font-size:28px;">	
+        📦  </span>  TEDARİKÇİ YÖNETİMİ
+    </a>
 
-  <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['/kiyafet']"><span style="font-size:5px;">&#129466;
-   </span> KIYAFET 
-  </a>
-  <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['/table']">
-    <mat-icon>people</mat-icon> ÇALIŞAN
-  </a>
-  <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['/order-table']" >
-    <mat-icon>shopping_basket</mat-icon> SATIN ALMA
-  </a>
-</mat-nav-list>
+  </mat-nav-list>

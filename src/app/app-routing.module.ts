@@ -5,21 +5,23 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TableComponent } from './components/table/table.component';
 import { OrderTableComponent } from './components/order-table/order-table.component';
+import { SuppliersComponent } from './components/suppliers/suppliers.component';
 
 const routes: Routes = [
   { path: 'table', component: TableComponent },
   { path: 'kiyafet', component: KiyafetTableComponent },
-  { path: 'order-table', component:OrderTableComponent }
-  
+  { path: 'order-table', component: OrderTableComponent },
+  { path: 'suppliers', component: SuppliersComponent },
+
   // { path: 'bagis', component: BagisComponent },
   // { path: 'bagis-grid', component: BagisGridComponent },
   // { path: 'bagis/:id', component: BagisComponent },
   // { path: 'bagis-update', component: BagisUpdateComponent },
   // { path: 'grid', component: GridComponent },
   // { path: '', component: AboutComponent },];
-]
+];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

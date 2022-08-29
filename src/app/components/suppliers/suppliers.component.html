@@ -1,0 +1,55 @@
+<div class="button">
+    <button (click)="openDialog()" style="background-color:rgb(3, 131, 3) ;" mat-mini-fab color="accent" aria-label="Example icon button with a delete icon">
+      <mat-icon>person_add</mat-icon>
+    </button>
+  </div>
+
+  <h2 class="aw">TEDARİKÇİ TABLOSU</h2>
+
+  <div class="mat-elevation-z8">
+    <mat-form-field class="filter" appearance="standard">
+      <mat-label>Ara..</mat-label>
+      <input matInput (keyup)="applyFilter($event)" #input>
+    </mat-form-field>
+    
+    <table 
+     mat-table [dataSource]="dataSource"
+    matSort matSortActive="tedarikci_adi" matSortDisableClear matSortDirection="desc">     
+      
+      <ng-container  matColumnDef="tedarikci_adi">
+        <th class="bold" mat-header-cell *matHeaderCellDef mat-sort-header>Tedarikçi Adı</th>
+        <td  mat-cell *matCellDef="let element"> {{element.tedarikci_adi}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="tedarik_edilen_mal">
+        <th class="bold" mat-header-cell *matHeaderCellDef mat-sort-header=>Tedarik Edilen Mal </th>
+        <td mat-cell *matCellDef="let element"> {{element.tedarik_edilen_mal}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="Sil">
+        <th class="bold" mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element"><button mat-mini-fab color="warn" aria-label="Example icon button with a delete icon" (click)="deleteSupplier(element.tedarikci_id)" (click)="refresh()">
+          
+          <mat-icon>close</mat-icon>
+        </button>
+        </td>
+      </ng-container>
+
+      <!-- <ng-container matColumnDef="Güncelle">
+        <th class="bold" mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element"> <button style="background-color:rgb(68, 70, 70);" mat-mini-fab color="primary" aria-label="Example icon button with a delete icon" (click)="openDialog2(element)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+      </ng-container> -->
+      
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns:displayedColumns"></tr>
+    </table>
+    
+    <mat-paginator [pageSizeOptions]="[10]"
+                   showFirstLastButtons 
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  
+  

@@ -1,0 +1,49 @@
+<form class="example-form" [formGroup]="formGrup">
+    <table>
+     
+  </table>
+  <!-- <table>
+   
+  <div>
+    
+    <td>
+      <mat-form-field class="example-full-width" id="n" appearance="fill">
+        <mat-label>Tedarikçi ID</mat-label>
+        <input formControlName="tedarikci_id" matInput>
+      </mat-form-field>
+    </td>
+      </div>
+  </table> -->
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        
+      <td>
+      <mat-form-field class="example-full-width" id="n" appearance="fill">
+        <mat-label>Tedarikçi Adı</mat-label>
+        <input formControlName="tedarikci_adi" matInput>
+      </mat-form-field>
+    </td>
+    <td>
+        <mat-form-field class="example-full-width" id="n" appearance="fill">
+            <mat-label>Tedarik Edilen Mal</mat-label>
+            <input formControlName="tedarik_edilen_mal" matInput>
+          </mat-form-field>
+  </td>
+    <td>
+    </table>
+  
+     
+    <div class="ab">
+    <button style="width: 150px;" (click)="saveSupplier()"  mat-raised-button color="primary" >Kaydet</button>
+    
+    <button class="p"
+    style="width: 150px"
+    mat-raised-button
+    color="warn"
+    (click)="cancel()"
+  >
+    İptal
+  </button>
+  </div>
+  
+  </form>

@@ -41,7 +41,10 @@ import { KiyafetInputComponent } from './components/kiyafet-input/kiyafet-input.
 import { OrderInputComponent } from './components/order-input/order-input.component';
 import { KiyafetFeaturesComponent } from './components/kiyafet-features/kiyafet-features.component';
 import { OrderTableComponent } from './components/order-table/order-table.component';
-import { KiyafetFeaturesInputComponent } from './components/kiyafet-features-input/kiyafet-features-input.component'
+import { KiyafetFeaturesInputComponent } from './components/kiyafet-features-input/kiyafet-features-input.component';
+import { SuppliersComponent } from './components/suppliers/suppliers.component';
+import { SuppliersInputComponent } from './components/suppliers-input/suppliers-input.component';
+import { SupplierInputUpdateComponent } from './components/supplier-input-update/supplier-input-update.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +64,10 @@ import { KiyafetFeaturesInputComponent } from './components/kiyafet-features-inp
     OrderInputComponent,
     KiyafetFeaturesComponent,
     OrderTableComponent,
-    KiyafetFeaturesInputComponent
+    KiyafetFeaturesInputComponent,
+    SuppliersComponent,
+    SuppliersInputComponent,
+    SupplierInputUpdateComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { baseUrl } from '../utils/baseUrl';
 import { map } from 'rxjs';
 import { Product } from '../models/product';
 import { Order } from '../models/order';
+import { Suppliers } from '../models/suppliers';
 
 @Injectable({
   providedIn: 'root'
@@ -17,14 +18,14 @@ export class ConnectDbService {
   getUserInformation2!:Product
   getUserInformation3!:Clothes
   getUserInformation4!:Clothes
-
+  getUserInformation5!:Suppliers
 
 
 
   constructor(private http:HttpClient) { }
 
   getToken() { // ************
-    return "32181731623158666181"
+    return "27867484451781418126"
     //return localStorage.getItem('token')
   }
 
@@ -426,6 +427,68 @@ export class ConnectDbService {
                   return response.message;
                 })
               );
+            }
+            insertSupplier(data: Suppliers) {
+              const body = {
+                Token: this.getToken(),
+                DataStoreId: '24377433561311326857',
+                Operation: 'insert',
+                Encrypted: 1951,
+                Data: `Insert into "postgres".public.botas_tedarikci(tedarikci_adi,tedarik_edilen_mal) values('${data.tedarikci_adi}','${data.tedarik_edilen_mal}')`,
+              };
+              return this.http.post(baseUrl + 'Applications/DataOps', body);
+            }
+            getSupplier(){
+              const body = {
+                Token: this.getToken(),
+                DataStoreId: '24377433561311326857',
+                Operation: 'read',
+                Encrypted: 1951,
+                Data: `select * from \"postgres\".public.botas_tedarikci`
+              };
+              return this.http.post(baseUrl + 'Applications/DataOps', body).pipe(
+                map((response: any) => {
+                  return response.message;
+                })
+              );
+            }
+            getSupplierData(tedarikci_id:any) {
+              const body = {
+                Token: this.getToken(),
+                DataStoreId: '24377433561311326857',
+                Operation: 'read',
+                Encrypted: 1951,
+                Data: `select tedarikci_adi from "postgres".public.botas_tedarikci WHERE tedarikci_id=${tedarikci_id}`
+              };
+              return this.http.post(baseUrl + 'Applications/DataOps', body).pipe(
+                map((response: any) => {
+                  return response.message;
+                })
+              );
+            }
+            deleteSuppliers(tedarikci_id: any) {
+              const body = {
+                Token: this.getToken(),
+                DataStoreId: '24377433561311326857',
+                Operation: 'delete',
+                Encrypted: 1951,
+                Data: `delete from \"postgres\".public.botas_tedarikci where tedarikci_id=${tedarikci_id}`
+              };
+              return this.http.post(baseUrl + 'Applications/DataOps', body)
+                
+            } 
+            updateSuppliers(data:Suppliers){
+              console.log(this.getUserInformation5.tedarikci_id)
+              const body = {
+                Token: this.getToken(),
+                DataStoreId: '24377433561311326857',
+                Operation: 'update',
+                Encrypted: 1951,
+                Data:
+                  `Update \"postgres\".public.botas_tedarikci Set tedarikci_id=${data.tedarikci_id},tedarikci_adi='${data.tedarikci_adi}',tedarik_edilen_mal='${data.tedarik_edilen_mal}'
+                  WHERE tedarikci_id = ${this.getUserInformation5.tedarikci_id}`
+              };
+              return this.http.post(baseUrl + 'Applications/DataOps', body);
             }
     }
 

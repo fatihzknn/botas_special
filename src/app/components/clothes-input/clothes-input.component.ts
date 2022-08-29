@@ -69,10 +69,10 @@ export class ClothesInputComponent implements OnInit {
       console.log(this.formGrup.value)
       
     let clothe = Object.assign(this.clothes,this.formGrup.value)
-    console.log(clothe)
-    console.log(this.clothes)
+    // console.log(clothe)
+    // console.log(this.clothes)
     this.connectService.insertClothes(clothe).subscribe(res => {
-      console.log(res)
+      // console.log(res)
       alert("Çalışan Kaydedildi")
       this.refresh()
     })

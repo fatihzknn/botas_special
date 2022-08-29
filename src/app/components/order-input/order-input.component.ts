@@ -82,5 +82,11 @@ export class OrderInputComponent implements OnInit {
       
     });
   }
+  calculateTl_fiyat(){
+    
+    this.formGrup.controls['tl_fiyat'].setValue((this.formGrup.value.kur * this.formGrup.value.fiyat))
+    console.log(this.formGrup.controls['tl_fiyat'])
+   
+  }
 
   }
