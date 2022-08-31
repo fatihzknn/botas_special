@@ -11,6 +11,6 @@ export interface Order {
     fiyat:number,
     para_birimi:string,
     kur:number,
-    tl_fiyat:number
-  
+    tl_fiyat:number,
+    durum:string
     }

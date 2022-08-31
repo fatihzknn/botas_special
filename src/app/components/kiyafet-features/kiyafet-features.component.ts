@@ -18,7 +18,7 @@ export class KiyafetFeaturesComponent implements OnInit {
 
   displayedColumns: string[] = ["ozellik_adi"];
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {clothes_name: string},
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {clothes_name: string,clothes_features:string},
   public dialogRef: MatDialogRef<KiyafetFeaturesComponent>,
     public dialog: MatDialog,
     private fb: FormBuilder,
@@ -36,4 +36,10 @@ export class KiyafetFeaturesComponent implements OnInit {
     });
     
   }
+  // readClotheFeatures(clothes_features:any){
+  //   this.connectService.getClotheFeatures(clothes_features).subscribe((res)=>{
+  //     this.features = res
+  //     console.log(this.features)
+  //   })
+  // // }
 }

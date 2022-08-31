@@ -73,22 +73,11 @@ export class KiyafetTableComponent implements OnInit {
     })
 
   }
-  openDialog3(kiyafet_no:any,kiyafet_adi:any){
-    
-    this.connectService.getUserInformation4= kiyafet_no;
-    this.connectService.getClothesCount().subscribe((res) => {
-    this.dialog.open(OrderInputComponent,{
-          width:"470px",
-          data:{kiyafet_no:kiyafet_no, kiyafet_adi: kiyafet_adi }
-          
-        })
-    });
-   
-  }
-  openDialog4(kiyafet_no:any, kiyafet_adi:any){
+  
+  openDialog4(kiyafet_no:any, kiyafet_adi:any,ozellik:any){
     this.dialog.open(KiyafetFeaturesComponent,{
       width:"1050px",
-      data:{clothes_no:kiyafet_no, clothes_name: kiyafet_adi }
+      data:{clothes_no:kiyafet_no, clothes_name: kiyafet_adi,features:ozellik }
       
     })
     }

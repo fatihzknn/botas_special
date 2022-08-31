@@ -19,13 +19,14 @@ export class ConnectDbService {
   getUserInformation3!:Clothes
   getUserInformation4!:Clothes
   getUserInformation5!:Suppliers
+  getUserInformation6!:Order
 
 
 
   constructor(private http:HttpClient) { }
 
   getToken() { // ************
-    return "27867484451781418126"
+    return "41633656136714812862"
     //return localStorage.getItem('token')
   }
 
@@ -365,7 +366,7 @@ export class ConnectDbService {
                 DataStoreId: '67285135834775547565',
                 Operation: 'insert',
                 Encrypted: 1951,
-                Data: `Insert into "postgres".public.botas_kiyafet_siparis(tedarikci_adi,kiyafet_adi,adet,beden,siparis_tarihi,sezon,ozellik,birim,fiyat,para_birimi,kur,tl_fiyat) values('${data.tedarikci_adi}','${data.kiyafet_adi}',${data.adet},'${data.beden}','${data.siparis_tarihi}','${data.sezon}','${data.ozellik}','${data.birim}',${data.fiyat},'${data.para_birimi}',${data.kur},${data.tl_fiyat})`,
+                Data: `Insert into "postgres".public.botas_kiyafet_siparis(tedarikci_adi,kiyafet_adi,adet,beden,siparis_tarihi,sezon,ozellik,birim,fiyat,para_birimi,kur,tl_fiyat,durum) values('${data.tedarikci_adi}','${data.kiyafet_adi}',${data.adet},'${data.beden}','${data.siparis_tarihi}','${data.sezon}','${data.ozellik}','${data.birim}',${data.fiyat},'${data.para_birimi}',${data.kur},${data.tl_fiyat},'TALEP OLUŞTURULDU')`,
               };
               return this.http.post(baseUrl + 'Applications/DataOps', body);
             }
@@ -399,6 +400,24 @@ export class ConnectDbService {
               );
 
             }
+            getClotheFeatures(clothes_features:any){
+
+            }
+            // getBagisKontakJoin(){
+            //   const body = {
+            //     Token: this.authService.getToken(),
+            //     DataStoreId: '35612368858558141732',
+            //     Operation: 'read',
+            //     Encrypted: 1951,
+            //     Data: "select * from public.bagis " + 
+            //     "Join kontaklar on public.bagis.bagisci_id=public.kontaklar.id"
+            // };
+            // return this.http.post(baseUrl + 'Applications/DataOps', body).pipe(
+            //   map((response: any) => {
+            //     return response.message;
+            //   })
+            // );
+            // }
             getFeaturesName(){
               const body = {
                 Token: this.getToken(),
@@ -490,6 +509,85 @@ export class ConnectDbService {
               };
               return this.http.post(baseUrl + 'Applications/DataOps', body);
             }
+            deleteOrder(siparis_id: any) {
+              const body = {
+                Token: this.getToken(),
+                DataStoreId: '67285135834775547565',
+                Operation: 'delete',
+                Encrypted: 1951,
+                Data: `delete from \"postgres\".public.botas_kiyafet_siparis where siparis_id='${siparis_id}'`
+              };
+              return this.http.post(baseUrl + 'Applications/DataOps', body)
+             }
+             getTalepEdildi() {
+              const body = {
+                Token: this.getToken(),
+                DataStoreId: '67285135834775547565',
+                Operation: 'read',
+                Encrypted: 1951,
+                Data: `select * from \"postgres\".public.botas_kiyafet_siparis where durum = 'TALEP OLUŞTURULDU' `
+              };
+              return this.http.post(baseUrl + 'Applications/DataOps', body).pipe(
+                map((response: any) => {
+                  return response.message;
+                })
+              );
+            }
+            getSiparisVerildi() {
+              const body = {
+                Token: this.getToken(),
+                DataStoreId: '67285135834775547565',
+                Operation: 'read',
+                Encrypted: 1951,
+                Data: `select * from \"postgres\".public.botas_kiyafet_siparis where durum = 'SİPARİŞ VERİLDİ' `
+              };
+              return this.http.post(baseUrl + 'Applications/DataOps', body).pipe(
+                map((response: any) => {
+                  return response.message;
+                })
+              );
+            }
+            getTedarikSurecinde() {
+              const body = {
+                Token: this.getToken(),
+                DataStoreId: '67285135834775547565',
+                Operation: 'read',
+                Encrypted: 1951,
+                Data: `select * from \"postgres\".public.botas_kiyafet_siparis where durum = 'TEDARİK SÜRECİNDE' `
+              };
+              return this.http.post(baseUrl + 'Applications/DataOps', body).pipe(
+                map((response: any) => {
+                  return response.message;
+                })
+              );
+            }
+            getTeslimEdildi() {
+              const body = {
+                Token: this.getToken(),
+                DataStoreId: '67285135834775547565',
+                Operation: 'read',
+                Encrypted: 1951,
+                Data: `select * from \"postgres\".public.botas_kiyafet_siparis where durum = 'TESLİM EDİLDİ' `
+              };
+              return this.http.post(baseUrl + 'Applications/DataOps', body).pipe(
+                map((response: any) => {
+                  return response.message;
+                })
+              );
+            }
+            updateOrder(data: Order) {
+              console.log(this.getUserInformation6.siparis_id)
+                  const body = {
+                    Token: this.getToken(),
+                    DataStoreId: '54524581455213527462',
+                    Operation: 'update',
+                    Encrypted: 1951,
+                    Data:
+                      `Update \"postgres\".public.botas_kiyafet_siparis Set tedarikci_adi='${data.tedarikci_adi}',kiyafet_adi='${data.kiyafet_adi}',adet='${data.adet}',beden='${data.beden}',siparis_tarihi='${data.siparis_tarihi}',sezon='${data.sezon}',ozellik='${data.ozellik}',birim='${data.birim}',fiyat='${data.fiyat}',para_birimi='${data.para_birimi}',kur='${data.kur}',tl_fiyat='${data.tl_fiyat}',durum='${data.durum}''
+                      WHERE siparis_id = ${this.getUserInformation6.siparis_id}`
+                  };
+                  return this.http.post(baseUrl + 'Applications/DataOps', body);
+                }
     }
 
 

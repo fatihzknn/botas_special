@@ -1,3 +1,4 @@
+import { OrderUpdateComponent } from './../order-update/order-update.component';
 import { OrderInputComponent } from './../order-input/order-input.component';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
@@ -16,7 +17,11 @@ import { ConnectDbService } from 'src/app/services/connect-db.service';
 })
 export class OrderTableComponent implements OnInit {
   orderArray: Order[]=[]
-  displayedColumns:string[] = ["tedarikci_adi","kiyafet_adi","adet","beden","siparis_tarihi","sezon","ozellik","birim","fiyat","para_birimi","kur","tl_fiyat"];
+  orderTalepEdildiArray:Order[]=[]
+  orderSiparisOlusturulduArray:Order[]=[]
+  orderTedarikSurecindeArray:Order[]=[]
+  orderTeslimEdildiArray:Order[]=[]
+  displayedColumns:string[] = ["tedarikci_adi","kiyafet_adi","adet","beden","siparis_tarihi","sezon","ozellik","birim","fiyat","para_birimi","kur","tl_fiyat","durum","Guncelle","Sil"];
   dataSource = new MatTableDataSource<Order>(this.orderArray)
   constructor(
   public dialog: MatDialog,
@@ -46,5 +51,64 @@ export class OrderTableComponent implements OnInit {
 
     })
   }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  refresh(){
+    this.connectService.getOrder().subscribe((data: Order[]) => {
+      this.dataSource.data = data;
+    })
+
+  }
+  deleteOrder(siparis_id:any){
+    if (confirm('Kaydı silmek istiyor musunuz? ')) {
+      this.connectService.deleteOrder(siparis_id).subscribe((res) => {
+        alert('Kayıt silindi!');
+        this.refresh();
+      });
+    }
+  }
+  readTalepEdildi(){
+    this.connectService.getTalepEdildi().subscribe(res=>{
+      this.orderTalepEdildiArray = res;
+      this.dataSource = new MatTableDataSource<Order>(this.orderTalepEdildiArray);
+      this.dataSource.paginator = this.paginator;
+      console.log(this.orderTalepEdildiArray);
+    })
+  }
+  readSiparisVerildi(){
+    this.connectService.getSiparisVerildi().subscribe(res=>{
+      this.orderSiparisOlusturulduArray = res;
+      this.dataSource = new MatTableDataSource<Order>(this.orderSiparisOlusturulduArray);
+      this.dataSource.paginator = this.paginator;
+      console.log(this.orderSiparisOlusturulduArray);
+    })
+  }
+  readTedarikSurecinde(){
+    this.connectService.getTedarikSurecinde().subscribe(res=>{
+      this.orderTedarikSurecindeArray = res;
+      this.dataSource = new MatTableDataSource<Order>(this.orderTedarikSurecindeArray);
+      this.dataSource.paginator = this.paginator;
+      console.log(this.orderTedarikSurecindeArray);
+    })
+  }
+  readTeslimEdildi(){
+    this.connectService.getTeslimEdildi().subscribe(res=>{
+      this.orderTeslimEdildiArray = res;
+      this.dataSource = new MatTableDataSource<Order>(this.orderTeslimEdildiArray);
+      this.dataSource.paginator = this.paginator;
+      console.log(this.orderTeslimEdildiArray);
+    })
+  }
+  openDialog2(order:Order){
+    
+    this.connectService.getUserInformation6= order;
+    this.dialog.open(OrderUpdateComponent,{
+      data:{order:order }
+      
+    })
+  }
+ 
 
 }

@@ -44,7 +44,8 @@ import { OrderTableComponent } from './components/order-table/order-table.compon
 import { KiyafetFeaturesInputComponent } from './components/kiyafet-features-input/kiyafet-features-input.component';
 import { SuppliersComponent } from './components/suppliers/suppliers.component';
 import { SuppliersInputComponent } from './components/suppliers-input/suppliers-input.component';
-import { SupplierInputUpdateComponent } from './components/supplier-input-update/supplier-input-update.component'
+import { SupplierInputUpdateComponent } from './components/supplier-input-update/supplier-input-update.component';
+import { OrderUpdateComponent } from './components/order-update/order-update.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +68,8 @@ import { SupplierInputUpdateComponent } from './components/supplier-input-update
     KiyafetFeaturesInputComponent,
     SuppliersComponent,
     SuppliersInputComponent,
-    SupplierInputUpdateComponent
+    SupplierInputUpdateComponent,
+    OrderUpdateComponent
   ],
   imports: [
     BrowserModule,
