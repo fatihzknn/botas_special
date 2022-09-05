@@ -8,6 +8,7 @@ import { map } from 'rxjs';
 import { Product } from '../models/product';
 import { Order } from '../models/order';
 import { Suppliers } from '../models/suppliers';
+import { Features } from '../models/features';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class ConnectDbService {
   constructor(private http:HttpClient) { }
 
   getToken() { // ************
-    return "53761515831888632615"
+    return "81427862382447718717"
     //return localStorage.getItem('token')
   }
 
@@ -587,6 +588,20 @@ export class ConnectDbService {
                       WHERE siparis_id = ${this.getUserInformation6.siparis_id}`
                   };
                   return this.http.post(baseUrl + 'Applications/DataOps', body);
+                }
+                insertFeatures(data:Features){
+                  const body = {
+                    Token: this.getToken(),
+                    DataStoreId: '77873244628478578536',
+                    Operation: 'insert',
+                    Encrypted: 1951,
+                    Data: `Insert into "postgres".public.botas_kiyafet_ozellik(ozellik_adi) values('${data.ozellik_adi}')`,
+                  };
+                  return this.http.post(baseUrl + 'Applications/DataOps', body).pipe(
+                    map((response: any) => {
+                      return response.message;
+                    })
+                  );
                 }
     }
 

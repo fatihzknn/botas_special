@@ -11,8 +11,8 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 })
 export class TableInputComponent implements OnInit {
   
-  constructor(private dialogRef:MatDialogRef<TableInputComponent>,private fb:FormBuilder, private connectService:ConnectDbService) { }
-
+  constructor(private dialogRef:MatDialogRef<TableInputComponent>,private fb:FormBuilder, private connectService:ConnectDbService, private dialog:MatDialog) { }
+  help:any
   sicil_no:[] = []
   formGrup!:FormGroup;
   
@@ -49,14 +49,26 @@ export class TableInputComponent implements OnInit {
       if (this.formGrup.valid){  
         let employee = Object.assign(this.formGrup.value, {} as Employee)
         this.sicil_no.forEach(element => {
-          if(element== employee.sicil_no ){
-            alert("Aynı Sicil Numarasında kayıt bulunmaktadır.")
+          
+          if(element['sicil_no'] == employee.sicil_no ){
+            this.help = element['sicil_no'] 
+            console.log("sa")
+            alert("Aynı Sicil Numarasında kayıt bulunmaktadır.")  
+            this.cancel()
+            this.openDialog()  
+            
           }
+        
         });
+       if(this.help != employee.sicil_no){
         this.connectService.insertEmployee(employee).subscribe(res => {
           console.log(res)
           alert("Çalışan Kaydedildi")
+          this.refresh2()
+
         })
+       }
+        
         }
         else{
           alert("Tüm boşlukları doldurunuz")
@@ -67,8 +79,14 @@ export class TableInputComponent implements OnInit {
     
   }
   refresh(){
-    //window.location.reload(); 
+    window.location.reload(); 
 
+  }
+  refresh2(){
+    window.location.replace("/table")
+  }
+  refresh3(){
+    window.location.replace("/table-input")
   }
   cancel(){
     this.dialogRef.close()
@@ -78,5 +96,10 @@ export class TableInputComponent implements OnInit {
     this.connectService.getSicilNo().subscribe((res) => {
       this.sicil_no = res[0];
     });
+  }
+  openDialog(){
+    this.dialog.open(TableInputComponent,{
+      data:{ }
+    })
   }
 }

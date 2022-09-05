@@ -1,0 +1,31 @@
+
+    <h1 mat-dialog-title>Özellikler</h1>
+<div mat-dialog-content>
+    <div class="end">
+        <button style="background-color:rgb(3, 131, 3) ;" mat-mini-fab color="accent" aria-label="Example icon button with a delete icon" (click)="openDialog()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    <table> 
+        <ul *ngFor="let item of featuresName">
+        <li>
+            <p>{{item.ozellik_adi}}</p>
+        </li>
+          </ul>
+         
+    </table>
+    
+</div>
+
+<!-- <div class="loli">
+    <td >
+        <mat-form-field class="example-full-width" id="n" appearance="fill">
+          <mat-label>Özellik</mat-label>
+          <input formControlName="ozellik_adi" matInput>
+        </mat-form-field>
+      </td>
+  </div> -->
+
+  
+
+

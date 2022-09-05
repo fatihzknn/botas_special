@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 import { ConnectDbService } from 'src/app/services/connect-db.service';
 import { KiyafetInputComponent } from '../kiyafet-input/kiyafet-input.component';
 import { OrderTableComponent } from '../order-table/order-table.component';
+import { FeaturesAddComponent } from '../features-add/features-add.component';
 
 @Component({
   selector: 'app-kiyafet-table',
@@ -80,6 +81,12 @@ export class KiyafetTableComponent implements OnInit {
       data:{clothes_no:kiyafet_no, clothes_name: kiyafet_adi,features:ozellik }
       
     })
+    }
+    openDialog6() {
+      this.dialog.open(FeaturesAddComponent,{
+        width:"750px",
+        data:{ }
+      })
     }
 
   }
