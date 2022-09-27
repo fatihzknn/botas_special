@@ -1,11 +1,23 @@
+<div class="dd">
+  <button style=" background-color:transparent;" mat-mini-fab color="" aria-label="Example icon button with a delete icon" (click)="cancel()">
 
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
     <h1 mat-dialog-title>Özellikler</h1>
 <div mat-dialog-content>
     <div class="end">
         <button style="background-color:rgb(3, 131, 3) ;" mat-mini-fab color="accent" aria-label="Example icon button with a delete icon" (click)="openDialog()">
           <mat-icon>add</mat-icon>
         </button>
+        
       </div>
+      <!-- <div id="a">
+        <button  style="background-color:aqua ;" mat-mini-fab color="accent" aria-label="Example icon button with a delete icon" (click)="cancel()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+       -->
     <table> 
         <ul *ngFor="let item of featuresName">
         <li>

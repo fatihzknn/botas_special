@@ -25,7 +25,7 @@ export class KiyafetTableComponent implements OnInit {
   
 
   dataSource = new MatTableDataSource<Clothes>(this.clothesArray);
-  displayedColumns: string[] = ["kiyafet_adi","kullanim_suresi","Güncelle","Sil","Ozellik"];  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  displayedColumns: string[] = ["kiyafet_adi","kullanim_suresi","Güncelle","Sil"];  @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(public dialog: MatDialog, private router: Router, private connectService: ConnectDbService) { }
     formGrup!:FormGroup;
 
@@ -75,13 +75,13 @@ export class KiyafetTableComponent implements OnInit {
 
   }
   
-  openDialog4(kiyafet_no:any, kiyafet_adi:any,ozellik:any){
-    this.dialog.open(KiyafetFeaturesComponent,{
-      width:"1050px",
-      data:{clothes_no:kiyafet_no, clothes_name: kiyafet_adi,features:ozellik }
+  // openDialog4(kiyafet_no:any, kiyafet_adi:any,ozellik:any){
+  //   this.dialog.open(KiyafetFeaturesComponent,{
+  //     width:"1050px",
+  //     data:{clothes_no:kiyafet_no, clothes_name: kiyafet_adi,features:ozellik }
       
-    })
-    }
+  //   })
+  //   }
     openDialog6() {
       this.dialog.open(FeaturesAddComponent,{
         width:"750px",

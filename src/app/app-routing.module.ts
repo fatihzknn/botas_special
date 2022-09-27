@@ -9,6 +9,7 @@ import { SuppliersComponent } from './components/suppliers/suppliers.component';
 
 const routes: Routes = [
   { path: 'table', component: TableComponent },
+  { path: '', component: KiyafetTableComponent },
   { path: 'kiyafet', component: KiyafetTableComponent },
   { path: 'order-table', component: OrderTableComponent },
   { path: 'suppliers', component: SuppliersComponent },

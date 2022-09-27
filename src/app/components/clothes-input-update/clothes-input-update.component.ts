@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { Employee } from 'src/app/models/employee';
 import { Product } from 'src/app/models/product';
 import { ConnectDbService } from 'src/app/services/connect-db.service';
@@ -11,7 +12,8 @@ import { ConnectDbService } from 'src/app/services/connect-db.service';
   styleUrls: ['./clothes-input-update.component.scss']
 })
 export class ClothesInputUpdateComponent implements OnInit {
-
+  clothesArray: Product[] = [];
+  dataSource = new MatTableDataSource<Product>(this.clothesArray);
   constructor(@Inject(MAT_DIALOG_DATA) public data: {clothe: Product},public dialogRef: MatDialogRef<ClothesInputUpdateComponent>,private fb:FormBuilder,private connectService:ConnectDbService) { }
   clothes: Employee = {
     sicil_no: 0,
@@ -70,14 +72,17 @@ export class ClothesInputUpdateComponent implements OnInit {
       
       alert("Başarıyla Güncellendi!")
       this.connectService.getClothes()
-
+      this.refresh()
     
     })
   }
-  refresh(){
-    // window.location.reload(); 
 
-  }
+    refresh() {
+      this.connectService.getClothes().subscribe((data: Product[]) => {
+        this.dataSource.data = data;
+      })
+    }
+  
   
   cancel(){
     this.dialogRef.close()

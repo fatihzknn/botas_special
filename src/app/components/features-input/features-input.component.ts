@@ -36,6 +36,8 @@ export class FeaturesInputComponent implements OnInit {
       this.connectService.insertFeatures(features).subscribe(res => {
         
         alert("Kıyafet Kaydedildi")
+        this.dialog.closeAll()
+        this.openDialog()
       })
       }
       else{
@@ -46,8 +48,8 @@ export class FeaturesInputComponent implements OnInit {
   openDialog(){
     this.dialog.open(FeaturesAddComponent,{
       data:{ },
-      width:"1050px",
-      height:"1050px"
+      width:"758px",
+      height:"758px"
 
     })
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConnectDbService } from 'src/app/services/connect-db.service';
 import { FeaturesInputComponent } from '../features-input/features-input.component';
 
@@ -11,7 +11,7 @@ import { FeaturesInputComponent } from '../features-input/features-input.compone
 })
 export class FeaturesAddComponent implements OnInit {
   featuresName:any = [];
-  constructor(private connectService:ConnectDbService,public dialog: MatDialog,) { }
+  constructor(public dialogRef: MatDialogRef<FeaturesAddComponent>,private connectService:ConnectDbService,public dialog: MatDialog,) { }
 
   ngOnInit(): void {
     this.readFeaturesName()
@@ -29,4 +29,9 @@ export class FeaturesAddComponent implements OnInit {
       data:{ }
     })
   }
+  cancel(){
+    this.dialogRef.close();
+
+  }
+  
 }

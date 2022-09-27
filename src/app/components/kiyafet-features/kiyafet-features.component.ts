@@ -36,6 +36,10 @@ export class KiyafetFeaturesComponent implements OnInit {
     });
     
   }
+  cancel(){
+    this.dialogRef.close();
+
+  }
   // readClotheFeatures(clothes_features:any){
   //   this.connectService.getClotheFeatures(clothes_features).subscribe((res)=>{
   //     this.features = res
